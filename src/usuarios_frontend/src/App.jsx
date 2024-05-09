@@ -8,7 +8,7 @@ import Features from "./components/Features/Features";
 import AppStore from "./components/AppStore/AppStore";
 import Footer from "./components/Footer/Footer";
 import PopupPlayer from "./components/PopupPlayer/PopupPlayer";
-import Menu from "./components/Menu";
+// import Menu from "./components/Menu";
 
 
 import AOS from "aos";
@@ -33,7 +33,7 @@ const App = () => {
 
   return (
     <main className="overflow-x-hidden bg-white dark:bg-black text-black dark:text-white duration-300">
-        <Menu/>
+        {/* <Menu/> */}
       <Navbar />
       <Hero togglePlay={togglePlay} />
       <Quotes />
