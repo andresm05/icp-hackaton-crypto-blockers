@@ -30,12 +30,12 @@ const Menu = () => {
   onElementAvailable(".ii-styles", () => {
     const btn2 = Array.from(document.getElementsByClassName('ii-styles'));
 
-    const custom_style={
-        "color": "red",
-        "background-color": "blue",
-        "padding": "3px",
-        "margin-left": "4px"
-    }
+    // const custom_style={
+    //     "color": "red",
+    //     "background-color": "blue",
+    //     "padding": "3px",
+    //     "margin-left": "4px"
+    // }
     
 
     Object.assign(btn2[0].style,custom_style);

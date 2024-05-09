@@ -3,6 +3,18 @@ import Logo from "../../assets/logo.png";
 import { HiMenuAlt1, HiMenuAlt3 } from "react-icons/hi";
 import DarkMode from "./DarkMode";
 
+import { createClient } from "@connect2ic/core"
+import { InternetIdentity } from "@connect2ic/core/providers/internet-identity"
+import { ConnectButton, ConnectDialog, Connect2ICProvider } from "@connect2ic/react"
+import {  useConnect } from "@connect2ic/react";
+import {BrowserRouter, Route, Link, Routes} from 'react-router-dom';
+import Home from "./Home";
+import Users from "./Users";
+import UserCreate from "./UserCreate";
+import * as usuarios_backend from "declarations/usuarios_backend";
+
+
+
 const NavLinks = [
   {
     id: 1,
@@ -26,6 +38,20 @@ const NavLinks = [
   },
 ];
 const Navbar = () => {
+
+  const {principal} = useConnect();
+
+  function onElementAvailable(selector, callback) {
+    const observer = new MutationObserver(mutations => {
+      if (document.querySelector(selector)) {
+        observer.disconnect();
+        callback();
+      }
+    });
+  
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+
   const [showMenu, setShowMenu] = React.useState(false);
   const toggleMenu = () => setShowMenu(!showMenu);
   return (
