@@ -1,9 +1,5 @@
 import { useCanister, useConnect } from "@connect2ic/react";
 import React, { useEffect, useState } from "react";
-import Quotes from "../components/Quotes/Quotes";
-import Banner from "../components/Banner/Banner";
-import Banner2 from "../components/Banner/Banner2";
-import FeaturesRol from "../components/Features/FeaturesRol";
 // import LayoutNavbar from "../layouts/LayoutNavbar";
 import LayoutNavbar from "../layouts/LayoutNavbar";
 import AOS from "aos";
@@ -31,37 +27,20 @@ const RegisterOwner = () => {
         AOS.refresh();
     }, []);
 
-
-    useEffect(() => {
-        console.log("principal", principal);
-    }, [principal]);
-  
-    const saveUserOwner = async (e) => {
+    const saveUserCustomer = async (e) => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const phone = form.phone.value;
-        const address = form.address.value;
-        const userSaved = await usuarios_backend.createOwner(principal, email, phone, address, "Propietario");
-        console.log(userSaved);
+        const vehiclePlate = form.vehiclePlate.value;
+        const vehicleSize = parseInt(form.vehicleSize.value);
+        const latitude = Math.random() * (6.37-6.15) + 6.37
+        const longitude = Math.random() * (-75.42+75.65) - 75.65
 
-        // setLoading("Loading...");
-        // await usuarios_backend.createUser(nombre, primerApellido, segundoApellido, alias);
-        // setLoading("");
-        // {
-        //     document.getElementById('btnUserList').click();
-        // }
+        const vehicleType = form.vehicleType.value;
 
-    }
-
-    const saveUser = async (e) => {
-
-        e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const phone = form.phone.value;
-        const address = form.address.value;
-        const userSaved = await usuarios_backend.createOwner(principal, email, phone, address, "Propietario");
+        console.log(email, phone, vehiclePlate, vehicleSize, vehicleType, latitude, longitude);
+        const userSaved = await usuarios_backend.createCustomer(principal, email, phone,"Cliente", latitude, longitude, vehicleType, vehiclePlate, vehicleSize);
         console.log(userSaved);
 
         // setLoading("Loading...");
@@ -96,20 +75,31 @@ const RegisterOwner = () => {
                         <div className="card-body">
 
 
-                            <form class="max-w-sm mx-auto" onSubmit={saveUser}>
-                                <div class="mb-5">
-                                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tu correo</label>
-                                    <input type="email" name="email" class="form-input" placeholder="name@flowbite.com" required />
+                            <form className="max-w-sm mx-auto" onSubmit={saveUserCustomer}>
+                                <div className="mb-5">
+                                    <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tu correo</label>
+                                    <input type="email" name="email" className="form-input" placeholder="name@flowbite.com" required />
                                 </div>
-                                <div class="mb-5">
-                                    <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tu dispositivo móvil</label>
-                                    <input type="number" name="phone" id="password" class="form-input" required />
+                                <div className="mb-5">
+                                    <label for="phone" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tu dispositivo móvil</label>
+                                    <input type="number" name="phone" className="form-input" required />
                                 </div>
-                                <div class="mb-5">
-                                    <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tu dirección</label>
-                                    <input type="text" name="address"  class="form-input" required />
+                                <div className="mb-5">
+                                    <label for="vehicleType" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo de vehiculo</label>
+                                    <input type="text" name="vehicleType" className="form-input" required />
                                 </div>
-                                <button type="submit" class="">Submit</button>
+                                <div className="mb-5">
+                                    <label for="vehiclePlate" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Placa del vehículo</label>
+                                    <input type="text" name="vehiclePlate" className="form-input" required />
+                                </div>
+                                <label htmlFor="vehicleSize" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
+                                    <select name="vehicleSize" required className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option value=''>Elija el tamaño que mejor se ajuste a tu espacio</option>
+                                        <option value={1}>{`Pequeño (Largo: 415cm, Ancho: 160cm, Alto:125cm)`}</option>
+                                        <option value={2}>{`Mediano (Largo: 475cm, Ancho: 170cm, Alto:125cm)`}</option>
+                                        <option value={3}>{`Grande (Largo: 525cm, Ancho: 200cm, Alto:155cm)`}</option>
+                                    </select>
+                                <button type="submit" className="">Submit</button>
                             </form>
 
                         </div>

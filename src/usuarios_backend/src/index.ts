@@ -43,8 +43,8 @@ let trackings = StableBTreeMap<Principal, Tracking>(0);
 
 export default Canister({
     //Create a new user with an specific role
-    createOwner: update([text, text, text, text, text], Result(User, RoleException), (id, email, phone, 
-        role, address) => {
+    createOwner: update([text, text, text, text, float64, float64], Result(User, RoleException), (id, email, phone, 
+        role, latitude, longitude) => {
         console.log(role)
         const user: User = {
             id: Principal.fromText(id),
@@ -63,7 +63,8 @@ export default Canister({
             const owner: Owner = {
                 id: Principal.fromText(id),
                 bookings: [],
-                address
+                latitude,
+                longitude
             }
 
             owners.insert(owner.id, owner);
@@ -72,8 +73,9 @@ export default Canister({
         return Ok(user);
     }),
 
-    createCustomer: update([text, text, text, text, text, text, text, int64], Result(User, RoleException), (id, email, phone,
-        role, address, vehicleType, vehiclePlate, vehicleSize) => {
+    createCustomer: update([text, text, text, text, float64, float64, text, text, int64], Result(User, RoleException), (id, email, phone,
+        role, latitude, longitude, vehicleType, vehiclePlate, vehicleSize) => {
+
 
         if(role.toLowerCase() !== 'cliente'){
             return Err({
@@ -106,7 +108,8 @@ export default Canister({
             const customer: Customer = {
                 id: Principal.fromText(id),
                 vehicle,
-                address
+                latitude,
+                longitude
             }
 
             customers.insert(customer.id, customer);
@@ -150,9 +153,9 @@ export default Canister({
 
     //Update a user by id
     updateUser: update(
-        [text, text, text, text, text],
+        [text, text, text, text, float64, float64],
         Result(User, AplicationError),
-        (userId, email, phone, role, address) => {
+        (userId, email, phone, role, latitude, longitude) => {
             const userOpt = users.get(Principal.fromText(userId));
 
             if ('None' in userOpt) {
@@ -174,7 +177,8 @@ export default Canister({
                     owners.insert(Principal.fromText(userId), {
                         id: Principal.fromText(userId),
                         bookings: owner.Some.bookings,
-                        address
+                        latitude,
+                        longitude
                     });
                 }
             }
@@ -185,7 +189,8 @@ export default Canister({
                         customers.insert(Principal.fromText(userId), {
                             id: Principal.fromText(userId),
                             vehicle: customer.Some.vehicle,
-                            address
+                            latitude,
+                            longitude
                         });
                 }
             }
@@ -313,6 +318,12 @@ export default Canister({
         
         }
         return Ok(bookingFound);
+    }),
+
+    //read available bookings
+    readAvailableBookings: query([], Vec(Booking), () => {
+        const availableBookings = bookings.values().filter(booking => booking.available === true);
+        return availableBookings;
     }),
 
 

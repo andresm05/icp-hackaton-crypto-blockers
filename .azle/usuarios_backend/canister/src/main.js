@@ -96866,10 +96866,10 @@ var Principal = class _Principal {
     static fromHex(hex) {
         return new this(fromHexString(hex));
     }
-    static fromText(text3) {
-        let maybePrincipal = text3;
-        if (text3.includes(JSON_KEY_PRINCIPAL)) {
-            const obj = JSON.parse(text3);
+    static fromText(text5) {
+        let maybePrincipal = text5;
+        if (text5.includes(JSON_KEY_PRINCIPAL)) {
+            const obj = JSON.parse(text5);
             if (JSON_KEY_PRINCIPAL in obj) {
                 maybePrincipal = obj[JSON_KEY_PRINCIPAL];
             }
@@ -100700,13 +100700,13 @@ var Principal4 = class _Principal {
     static fromHex(hex) {
         return new this(fromHexString2(hex));
     }
-    static fromText(text3) {
-        const canisterIdNoDash = text3.toLowerCase().replace(/-/g, "");
+    static fromText(text5) {
+        const canisterIdNoDash = text5.toLowerCase().replace(/-/g, "");
         let arr = decode4(canisterIdNoDash);
         arr = arr.slice(4, arr.length);
         const principal = new this(arr);
-        if (principal.toText() !== text3) {
-            throw new Error(`Principal "${principal.toText()}" does not have a valid checksum (original value "${text3}" may not be a valid Principal ID).`);
+        if (principal.toText() !== text5) {
+            throw new Error(`Principal "${principal.toText()}" does not have a valid checksum (original value "${text5}" may not be a valid Principal ID).`);
         }
         return principal;
     }
@@ -100802,7 +100802,8 @@ var Booking = Record2({
 var Owner = Record2({
     id: Principal3,
     bookings: Vec2(Booking),
-    address: text
+    latitude: float64,
+    longitude: float64
 });
 // src/usuarios_backend/src/types/Vehicle.types.ts
 var Vehicle = Record2({
@@ -100815,7 +100816,8 @@ var Vehicle = Record2({
 var Customer = Record2({
     id: Principal3,
     vehicle: Vehicle,
-    address: text
+    latitude: float64,
+    longitude: float64
 });
 // src/usuarios_backend/src/types/Tracking.types.ts
 var Tracking = Record2({
@@ -100844,8 +100846,9 @@ var src_default = Canister({
         text,
         text,
         text,
-        text
-    ], Result(User, RoleException), (id2, email, phone, role, address)=>{
+        float64,
+        float64
+    ], Result(User, RoleException), (id2, email, phone, role, latitude, longitude)=>{
         console.log(role);
         const user = {
             id: Principal3.fromText(id2),
@@ -100862,7 +100865,8 @@ var src_default = Canister({
         const owner = {
             id: Principal3.fromText(id2),
             bookings: [],
-            address
+            latitude,
+            longitude
         };
         owners.insert(owner.id, owner);
         return Ok(user);
@@ -100872,11 +100876,12 @@ var src_default = Canister({
         text,
         text,
         text,
-        text,
+        float64,
+        float64,
         text,
         text,
         int64
-    ], Result(User, RoleException), (id2, email, phone, role, address, vehicleType, vehiclePlate, vehicleSize)=>{
+    ], Result(User, RoleException), (id2, email, phone, role, latitude, longitude, vehicleType, vehiclePlate, vehicleSize)=>{
         if (role.toLowerCase() !== "cliente") {
             return Err({
                 RoleException: "User is not a customer"
@@ -100903,7 +100908,8 @@ var src_default = Canister({
         const customer = {
             id: Principal3.fromText(id2),
             vehicle,
-            address
+            latitude,
+            longitude
         };
         customers.insert(customer.id, customer);
         return Ok(user);
@@ -100943,8 +100949,9 @@ var src_default = Canister({
         text,
         text,
         text,
-        text
-    ], Result(User, AplicationError), (userId, email, phone, role, address)=>{
+        float64,
+        float64
+    ], Result(User, AplicationError), (userId, email, phone, role, latitude, longitude)=>{
         const userOpt = users.get(Principal3.fromText(userId));
         if ("None" in userOpt) {
             return Err({
@@ -100964,7 +100971,8 @@ var src_default = Canister({
                 owners.insert(Principal3.fromText(userId), {
                     id: Principal3.fromText(userId),
                     bookings: owner.Some.bookings,
-                    address
+                    latitude,
+                    longitude
                 });
             }
         } else {
@@ -100974,7 +100982,8 @@ var src_default = Canister({
                 customers.insert(Principal3.fromText(userId), {
                     id: Principal3.fromText(userId),
                     vehicle: customer.Some.vehicle,
-                    address
+                    latitude,
+                    longitude
                 });
             }
         }
@@ -101092,6 +101101,11 @@ var src_default = Canister({
             owners.insert(Principal3.fromText(userId), ownerFound);
         }
         return Ok(bookingFound);
+    }),
+    //read available bookings
+    readAvailableBookings: query([], Vec2(Booking), ()=>{
+        const availableBookings = bookings.values().filter((booking)=>booking.available === true);
+        return availableBookings;
     })
 });
 // <stdin>

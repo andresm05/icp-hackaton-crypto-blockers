@@ -5,7 +5,6 @@ import { ConnectButton, ConnectDialog, Connect2ICProvider } from "@connect2ic/re
 import * as usuarios_backend from "declarations/usuarios_backend";
 import { createClient } from "@connect2ic/core"
 import { InternetIdentity } from "@connect2ic/core/providers/internet-identity"
-import {  useConnect } from "@connect2ic/react";
 import UserCreate from "./pages/UserCreate";
 import Users from "./pages/Users";
 import HomePage from "./pages/HomePage";
@@ -13,6 +12,7 @@ import RegisterOwner from "./pages/RegisterOwner";
 import Booking from "./pages/Booking";
 import RegisterParker from "./pages/RegisterParker";
 import "aos/dist/aos.css";
+import MakeReservation from "./pages/MakeReservation";
 
 const App = () => {
  
@@ -33,6 +33,7 @@ const App = () => {
           <Route path="/Register-owner" element={<RegisterOwner />} />
           <Route path="/Register-parker" element={<RegisterParker />} />
           <Route path="/Booking" element={<Booking />} />
+          <Route path="/Make-Reservation" element={<MakeReservation />} />
           {/* Ruta para el componente Login */}
           {/* <Route path="/login" element={<Login />} /> */}
         </Routes>

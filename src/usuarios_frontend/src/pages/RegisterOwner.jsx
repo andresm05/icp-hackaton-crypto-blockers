@@ -1,9 +1,5 @@
 import { useCanister, useConnect } from "@connect2ic/react";
 import React, { useEffect, useState } from "react";
-import Quotes from "../components/Quotes/Quotes";
-import Banner from "../components/Banner/Banner";
-import Banner2 from "../components/Banner/Banner2";
-import FeaturesRol from "../components/Features/FeaturesRol";
 // import LayoutNavbar from "../layouts/LayoutNavbar";
 import LayoutNavbar from "../layouts/LayoutNavbar";
 import AOS from "aos";
@@ -44,8 +40,9 @@ const RegisterOwner = () => {
         const form = e.target;
         const email = form.email.value;
         const phone = form.phone.value;
-        const address = form.address.value;
-        const userSaved = await usuarios_backend.createOwner(principal, email, phone, address, "Propietario");
+        const latitude = Math.random() * (6.37-6.15) + 6.37
+        const longitude = Math.random() * (-75.42+75.65) - 75.65
+        const userSaved = await usuarios_backend.createOwner(principal, email, phone, "Propietario", latitude,longitude);
         console.log(userSaved);
 
         // setLoading("Loading...");
@@ -106,10 +103,6 @@ const RegisterOwner = () => {
                                 <div class="mb-5">
                                     <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tu dispositivo móvil</label>
                                     <input type="number" name="phone" id="password" class="form-input" required />
-                                </div>
-                                <div class="mb-5">
-                                    <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tu dirección</label>
-                                    <input type="text" name="address"  class="form-input" required />
                                 </div>
                                 <button type="submit" class="">Submit</button>
                             </form>
