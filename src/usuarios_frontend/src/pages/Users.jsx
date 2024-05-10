@@ -8,19 +8,17 @@ const Users = () => {
   
   const [usersBackend] = useCanister("usuarios_backend");
   const {principal} = useConnect();
-  
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState("");
   const [idUser, setIdUser] = useState("");
   const [alias, setAlias] = useState("");
-
   const [showModalEditar, setShowModalEditar] = useState(false);
   const [showModalEliminar, setShowModalEliminar] = useState(false);
+
 
   const updateUser = async () => {
     // console.log('aui')
     const form = document.getElementById("formEditar")
-    
     const nombre = form.nombre.value;
     const primerApellido = form.primerApellido.value;
     const segundoApellido = form.segundoApellido.value;

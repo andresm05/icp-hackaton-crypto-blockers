@@ -10,9 +10,6 @@ import AOS from "aos";
 
 const RegisterOwner = () => {
 
-
-
-
     const { principal } = useConnect();
     const [usuarios_backend] = useCanister("usuarios_backend");
     // const [loading, setLoading] = useState("");
@@ -39,7 +36,7 @@ const RegisterOwner = () => {
         console.log("principal", principal);
     }, [principal]);
   
-    const saveUser = async (e) => {
+    const saveUserOwner = async (e) => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
@@ -57,23 +54,24 @@ const RegisterOwner = () => {
 
     }
 
-    // const saveUserParker = async (e) => {
-    //     e.preventDefault();
-    //     const form = e.target;
-    //     const email = form.email.value;
-    //     const phone = form.phone.value;
-    //     const address = form.address.value;
-    //     const userSaved = await usuarios_backend.createOwner(principal, email, phone, address, "Propietario");
-    //     console.log(userSaved);
+    const saveUser = async (e) => {
 
-    //     // setLoading("Loading...");
-    //     // await usuarios_backend.createUser(nombre, primerApellido, segundoApellido, alias);
-    //     // setLoading("");
-    //     // {
-    //     //     document.getElementById('btnUserList').click();
-    //     // }
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const phone = form.phone.value;
+        const address = form.address.value;
+        const userSaved = await usuarios_backend.createOwner(principal, email, phone, address, "Propietario");
+        console.log(userSaved);
 
-    // }
+        // setLoading("Loading...");
+        // await usuarios_backend.createUser(nombre, primerApellido, segundoApellido, alias);
+        // setLoading("");
+        // {
+        //     document.getElementById('btnUserList').click();
+        // }
+
+    }
 
     return (
         <div className=" ">
