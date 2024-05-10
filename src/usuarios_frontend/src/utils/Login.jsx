@@ -14,6 +14,7 @@ const Login = () => {
 
     const {principal} = useConnect();
 
+    console.log("este es el principal", principal)
     function onElementAvailable(selector, callback) {
       const observer = new MutationObserver(mutations => {
         if (document.querySelector(selector)) {
@@ -63,36 +64,31 @@ const Login = () => {
 
 
   return (
-    <div>             <ConnectButton />
-    <ConnectDialog /></div>
+    <div>             
+       {/* <Connect2ICProvider client={client}> */}
+      <ConnectButton />
+    <ConnectDialog />
+    {/* </Connect2ICProvider> */}
+    </div>
   )
 }
 
+
+export default Login
+  
+
 const client = createClient({
-    canisters: {
-      usuarios_backend,
-    },
-    providers: [
-      new InternetIdentity({ providerUrl: "http://bkyz2-fmaaa-aaaaa-qaaaq-cai.localhost:4943" })
-    ],
-    globalProviderConfig: {
-      /*
-       * Disables dev mode in production
-       * Should be enabled when using local canisters
-       */
-      dev: true,
-    },
-  
-  
-
-  
-  });
-  
-  
-  export default () => (
-   
-      <Login  client={client}/>
-
-  )
-  
-  
+  canisters: {
+    usuarios_backend,
+  },
+  providers: [
+    new InternetIdentity({ providerUrl: "http://bkyz2-fmaaa-aaaaa-qaaaq-cai.localhost:4943" })
+  ],
+  globalProviderConfig: {
+    /*
+     * Disables dev mode in production
+     * Should be enabled when using local canisters
+     */
+    dev: true,
+  },
+});

@@ -26,7 +26,7 @@ const App = () => {
 
   return (
     <main className="overflow-x-hidden bg-white dark:bg-black text-black dark:text-white duration-300">
-          <Connect2ICProvider >
+          {/* <Connect2ICProvider > */}
 
       <BrowserRouter>
         <Routes>
@@ -41,7 +41,7 @@ const App = () => {
         
       </BrowserRouter>
       
-      </Connect2ICProvider>
+      {/* </Connect2ICProvider> */}
 
     </main>
   );

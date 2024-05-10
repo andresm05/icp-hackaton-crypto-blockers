@@ -13,7 +13,7 @@ import Users from "../Users";
 import UserCreate from "../UserCreate";
 import * as usuarios_backend from "declarations/usuarios_backend";
 import Login from "../../utils/Login";
-
+import MenuCopy from "../Menu copy";
 // principal
 
 const Navbar = () => {
@@ -87,9 +87,9 @@ const Navbar = () => {
                     <Link to='/usuarios'className="text-xl font-semibold hover:text-primary py-2 hover:border-b-2 hover:border-secondary transition-colors duration-500" id="btnUserList">Usuarios</Link>
                     {/* <span className="fs-6 text">{principal}</span>
                     console.log(principal) */}
-              {/* <Login/> */}
+              <MenuCopy/>
               {/* Darkmode feature */}
-              <DarkMode />
+                    
             </ul>
           </nav>
 
