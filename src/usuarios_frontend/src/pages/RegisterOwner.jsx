@@ -73,14 +73,15 @@ const RegisterOwner = () => {
     // }
 
     return (
-        <div className=" ">
+        <div className="h-screen overflow-hidden ">
 
             <LayoutNavbar />
             {/* <Quotes />
       <Banner togglePlay={togglePlay} />
       <Banner2 togglePlay={togglePlay} /> */}
 
-            <div className="row  mt-5">
+            <div className="row  mt-5 h-screen overflow-hidden">
+
                 <div className="col-2"></div>
                 <div className="col-8">
                     {true != ""
@@ -88,28 +89,41 @@ const RegisterOwner = () => {
                         <div className="alert alert-primary">{true}</div>
                         :
                         <div></div>}
-                    <div className="card">
-                        <div className="card-header">
-                            Registrar Usuario
+                    <div className="w-full h-screen flex justify-center ">
+                    <div  data-aos="fade-up"
+                  data-aos-delay="200" className="card w-[400px] h-[450px]  mt-10 bg-white rounded-lg bg-opacity-10 shadow-xl shadow-violet-800">
+                        <div className="card-header justify-center text-center mb-10 mt-5 ">
+                        <p className="text-2xl">
+                        Registro <span className="font-bold">Propietario</span>
+            </p> 
                         </div>
+                  
                         <div className="card-body">
 
 
                             <form class="max-w-sm mx-auto" onSubmit={saveUser}>
-                                <div class="mb-5">
+                                <div class="mb-5 mx-5	">
                                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tu correo</label>
                                     <input type="email" name="email" class="form-input" placeholder="name@flowbite.com" required />
                                 </div>
-                                <div class="mb-5">
+                                <div class="mb-5  mx-5">
                                     <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tu dispositivo móvil</label>
                                     <input type="number" name="phone" id="password" class="form-input" required />
                                 </div>
-                                <button type="submit" class="">Submit</button>
+                                <button type="submit"  className="mx-5 form-send-button mt-4">Submit</button>
+                                <div className="mb-5  mx-5">
+                                    <label for="address" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tu dirección</label>
+                                    <input type="text" name="address"  className="form-input" required />
+                                </div>
+                                <button type="submit" className="mx-5 form-send-button mt-4">Submit</button>
                             </form>
 
                         </div>
                     </div>
+                    </div>
+                    
                 </div>
+                
                 <div className="col-2"></div>
 
             </div></div>

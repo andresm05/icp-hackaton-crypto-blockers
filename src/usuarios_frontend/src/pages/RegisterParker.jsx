@@ -68,10 +68,15 @@ const RegisterOwner = () => {
                         <div className="alert alert-primary">{true}</div>
                         :
                         <div></div>}
-                    <div className="card">
-                        <div className="card-header">
-                            Registrar Usuario
+               <div className="w-full h-screen flex justify-center ">
+                    <div  data-aos="fade-up"
+                  data-aos-delay="200" className="card w-[400px] h-[450px]  mt-10 bg-white rounded-lg bg-opacity-10 shadow-xl shadow-violet-800">
+                        <div className="card-header justify-center text-center mb-10 mt-5 ">
+                        <p className="text-2xl">
+                        Registro <span className="font-bold">Cliente</span>
+            </p> 
                         </div>
+                  
                         <div className="card-body">
 
 
@@ -99,9 +104,9 @@ const RegisterOwner = () => {
                                         <option value={2}>{`Mediano (Largo: 475cm, Ancho: 170cm, Alto:125cm)`}</option>
                                         <option value={3}>{`Grande (Largo: 525cm, Ancho: 200cm, Alto:155cm)`}</option>
                                     </select>
-                                <button type="submit" className="">Submit</button>
+                                <button type="submit"  className="mx-5 form-send-button mt-4">Submit</button>
                             </form>
-
+                            </div>
                         </div>
                     </div>
                 </div>

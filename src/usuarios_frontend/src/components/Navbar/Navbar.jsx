@@ -6,7 +6,7 @@ import DarkMode from "./DarkMode";
 import { createClient } from "@connect2ic/core"
 import { InternetIdentity } from "@connect2ic/core/providers/internet-identity"
 import { ConnectButton, ConnectDialog, Connect2ICProvider } from "@connect2ic/react"
-
+// import { Link } from "react-router-dom";
 
 import {  useConnect } from "@connect2ic/react";
 import {BrowserRouter, Route, Link, Routes} from 'react-router-dom';
@@ -20,6 +20,8 @@ import Login from "../../utils/Login";
 
 const Navbar = () => {
 
+
+  const {principal} = useConnect();
   const [showMenu, setShowMenu] = React.useState(false);
   const toggleMenu = () => setShowMenu(!showMenu);
   return (
@@ -29,9 +31,11 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           {/* logo section */}
           <div className="flex items-center gap-3">
-            <img src={Logo} alt="" className="h-16 bg-white rounded-lg p-1" />
+            <Link to="/">
+              <img src={Logo} alt="" className="h-16 bg-white rounded-full p-1" />
+            </Link>
             <p className="text-3xl">
-              VR <span className="font-bold">World</span>
+              ParQ<span className="font-bold">App</span>
             </p>
           </div>
           {/* Desktop Menu section */}
@@ -39,8 +43,9 @@ const Navbar = () => {
             <ul className="flex items-center gap-8">
 
               <Link to='/' className="text-xl font-semibold hover:text-primary py-2 hover:border-b-2 hover:border-secondary transition-colors duration-500">Inicio</Link>
-                    <Link to='/nuevo-usuario'className="text-xl font-semibold hover:text-primary py-2 hover:border-b-2 hover:border-secondary transition-colors duration-500" >Registro</Link>
-                    <Link to='/usuarios'className="text-xl font-semibold hover:text-primary py-2 hover:border-b-2 hover:border-secondary transition-colors duration-500" id="btnUserList">Usuarios</Link>
+              {principal? (
+                    <Link to='/nuevo-usuario'className="text-xl font-semibold hover:text-primary py-2 hover:border-b-2 hover:border-secondary transition-colors duration-500" >Registro</Link>) : <></>
+              }
                     {/* <span className="fs-6 text">{principal}</span>
                     console.log(principal) */}
 
