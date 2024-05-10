@@ -1,7 +1,10 @@
 service: () -> {
-    createUser: (text, text, text, text) -> (record {id:principal; alias:text; nombre:text; segundoApellido:text; primerApellido:text});
-    deleteUser: (text) -> (variant {Ok:record {id:principal; alias:text; nombre:text; segundoApellido:text; primerApellido:text}; Err:variant {UserDoesNotExist:text}});
-    readUserById: (text) -> (opt record {id:principal; alias:text; nombre:text; segundoApellido:text; primerApellido:text}) query;
-    readUsers: () -> (vec record {id:principal; alias:text; nombre:text; segundoApellido:text; primerApellido:text}) query;
-    updateUser: (text, text, text, text, text) -> (variant {Ok:record {id:principal; alias:text; nombre:text; segundoApellido:text; primerApellido:text}; Err:variant {UserDoesNotExist:text}});
+    bookingAssignment: (text, text, text, text, text) -> (variant {Ok:record {id:principal; fee_per_hour:float64; size:int64; available:bool}; Err:variant {AppRuntimeError:text}});
+    changeBookingState: (text, text, bool, float64) -> (variant {Ok:record {id:principal; fee_per_hour:float64; size:int64; available:bool}; Err:variant {AppRuntimeError:text}});
+    createBooking: (text, int64, bool, float64) -> (variant {Ok:record {id:principal; fee_per_hour:float64; size:int64; available:bool}; Err:variant {AppRuntimeError:text}});
+    createUser: (text, text, text, text, text, text, int64) -> (variant {Ok:record {id:principal; role:text; email:text; phone:text}; Err:variant {RoleException:text}});
+    deleteUser: (text) -> (variant {Ok:record {id:principal; role:text; email:text; phone:text}; Err:variant {AppRuntimeError:text}});
+    readUserById: (text) -> (opt record {id:principal; role:text; email:text; phone:text}) query;
+    readUsers: () -> (vec record {id:principal; role:text; email:text; phone:text}) query;
+    updateUser: (text, text, text, text, text) -> (variant {Ok:record {id:principal; role:text; email:text; phone:text}; Err:variant {AppRuntimeError:text}});
 }

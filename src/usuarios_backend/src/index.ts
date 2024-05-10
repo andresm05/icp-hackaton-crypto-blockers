@@ -4,6 +4,7 @@ import {
     Err,
     float64,
     int64,
+    nat64,
     Ok,
     Opt,
     Principal,
@@ -42,25 +43,22 @@ let trackings = StableBTreeMap<Principal, Tracking>(0);
 
 export default Canister({
     //Create a new user with an specific role
-    createUser: update([text, text, text, text, text, text, int64], Result(User, RoleException), (email, phone, role, address, 
-        vehicleType, vehiclePlate, size) => {
-        const id = generateId();
+    createOwner: update([Principal, text, text, text, text], Result(User, RoleException), (id, email, phone, 
+        role, address) => {
         const user: User = {
-            id:id,
+            id,
             email,
             phone,
             role
         };
 
-        if(role.toLocaleLowerCase() !== 'propietario' || role.toLocaleLowerCase() !== 'cliente'){
+        if(role.toLocaleLowerCase() !== 'propietario'){
             return Err({
-                    RoleException: role
+                    RoleException: 'User is not an owner'
                 })
         }
-
         users.insert(user.id, user);
 
-        if(role.toLocaleLowerCase() === 'propietario'){
             const owner: Owner = {
                 id,
                 bookings: [],
@@ -69,25 +67,53 @@ export default Canister({
 
             owners.insert(owner.id, owner);
         
-        }
-            else{
-                const vehicle: Vehicle = {
-                    id: generateId(),
-                    type: vehicleType,
-                    plate: vehiclePlate,
-                    size
-                }
-
-                const customer: Customer = {
-                    id,
-                    vehicle,
-                    address
-            }
-            customers.insert(customer.id, customer);
-        }
 
         return Ok(user);
     }),
+
+    createCustomer: update([Principal, text, text, text, text, text, text, int64], Result(User, RoleException), (id, email, phone,
+        role, address, vehicleType, vehiclePlate, vehicleSize) => {
+
+        if(role.toLocaleLowerCase() !== 'cliente'){
+            return Err({
+                    RoleException: 'User is not a customer'
+                })
+        }
+
+        const user: User = {
+            id,
+            email,
+            phone,
+            role
+        };
+
+        const vehicle: Vehicle = {
+            id: generateId(),
+            type: vehicleType,
+            plate: vehiclePlate,
+            size: vehicleSize
+        }
+
+        if(role.toLocaleLowerCase() !== 'cliente'){
+            return Err({
+                    RoleException: 'User is not a customer'
+                })
+        }
+
+        users.insert(user.id, user);
+
+            const customer: Customer = {
+                id,
+                vehicle,
+                address
+            }
+
+            customers.insert(customer.id, customer);
+        
+
+        return Ok(user);
+    }
+    ),
 
     //Read all users
     readUsers: query([], Vec(User), () => {
