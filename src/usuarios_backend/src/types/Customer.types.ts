@@ -3,5 +3,6 @@ import { Vehicle } from "./Vehicle.types";
 
 export const Customer = Record({
     id: Principal,
-    vehicle: Vec(Opt(Vehicle)),
+    vehicle: Vehicle,
+    address: text,
 });

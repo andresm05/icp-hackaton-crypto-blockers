@@ -1,7 +1,8 @@
-import { Principal, Record, float64, text } from "azle";
+import { Principal, Record, float64, int64, text } from "azle";
 
 export const Vehicle = Record({
     id: Principal,
-    volume: float64,
+    plate: text,
+    size: int64,
     type: text,
 });
