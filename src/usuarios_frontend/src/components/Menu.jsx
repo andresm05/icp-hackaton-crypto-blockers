@@ -5,8 +5,8 @@ import { ConnectButton, ConnectDialog, Connect2ICProvider } from "@connect2ic/re
 import {  useConnect } from "@connect2ic/react";
 import {BrowserRouter, Route, Link, Routes} from 'react-router-dom';
 import Home from "./Home";
-import Users from "./Users";
-import UserCreate from "./UserCreate";
+import Users from "../pages/Users";
+import UserCreate from "../pages/UserCreate";
 import * as usuarios_backend from "declarations/usuarios_backend";
 
 // import Programas from "./Programas";
@@ -23,6 +23,8 @@ const Menu = () => {
         callback();
       }
     });
+
+    
   
     observer.observe(document.body, { childList: true, subtree: true });
   }

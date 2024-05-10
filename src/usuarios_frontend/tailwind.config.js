@@ -6,6 +6,9 @@ export default {
     extend: {
       fontFamily: {
         parisienne: ["Parisienne", "cursive"],
+        fontFamily: {
+          'sans': ['League Spartan', 'sans-serif'],
+        },
       },
       colors: {
         primary: "#00C2FF",

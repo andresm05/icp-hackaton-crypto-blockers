@@ -1,9 +1,18 @@
 import { useCanister, useConnect } from "@connect2ic/react";
 import React, { useEffect, useState } from "react";
+import Quotes from "../components/Quotes/Quotes";
+import Banner from "../components/Banner/Banner";
+import Banner2 from "../components/Banner/Banner2";
+import FeaturesRol from "../components/Features/FeaturesRol";
+// import LayoutNavbar from "../layouts/LayoutNavbar";
+import LayoutNavbar from "../layouts/LayoutNavbar";
+import AOS from "aos";
+
+const RegisterOwner = () => {
 
 
-const UserCreate = () => {
 
+    
     const { principal } = useConnect();
     const [usuarios_backend] = useCanister("usuarios_backend");
     // const [loading, setLoading] = useState("");
@@ -15,11 +24,33 @@ const UserCreate = () => {
         phone: "",
         role: "",
     })
+        
+
+    const [isPlay, setIsPlay] = useState(false);
+    
+    const togglePlay = () => {
+      setIsPlay(!isPlay);
+    };
+  
+    useEffect(() => {
+      AOS.init({
+        offset: 100,
+        duration: 800,
+        easing: "ease-in-sine",
+        delay: 100,
+      });
+      AOS.refresh();
+    }, []);
+  
+
 
     useEffect(() => {
         console.log("principal", principal);
     }, [principal]);
 
+
+
+    
     const saveUser = async (e) => {
         e.preventDefault();
         const form = e.target
@@ -27,7 +58,7 @@ const UserCreate = () => {
         const primerApellido = form.primerApellido.value;
         const segundoApellido = form.segundoApellido.value;
         const alias = form.alias.value;
-
+        
         // setLoading("Loading...");
 
         // await usuarios_backend.createUser(nombre, primerApellido, segundoApellido, alias);
@@ -42,16 +73,21 @@ const UserCreate = () => {
 
 
     return (
+        <div className=" ">
+            
+            <LayoutNavbar />
+        {/* <Quotes />
+      <Banner togglePlay={togglePlay} />
+      <Banner2 togglePlay={togglePlay} /> */}
 
-        <div className="row  mt-5">
+      <div className="row  mt-5">
             <div className="col-2"></div>
             <div className="col-8">
                 {true != ""
                     ?
                     <div className="alert alert-primary">{true}</div>
                     :
-                    <div></div>
-                }
+                    <div></div>}
                 <div className="card">
                     <div className="card-header">
                         Registrar Usuario
@@ -76,9 +112,12 @@ const UserCreate = () => {
             </div>
             <div className="col-2"></div>
 
-        </div>
+        </div></div>
+
+
+        
     )
 }
 
 
-export default UserCreate
+export default RegisterOwner
