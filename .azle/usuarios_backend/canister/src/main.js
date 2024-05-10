@@ -100840,7 +100840,7 @@ var customers = StableBTreeMap(0);
 var bookings = StableBTreeMap(0);
 var trackings = StableBTreeMap(0);
 var src_default = Canister({
-    //Create a new user with an specific role
+    //Create a new owner
     createOwner: update([
         text,
         text,
@@ -100871,6 +100871,7 @@ var src_default = Canister({
         owners.insert(owner.id, owner);
         return Ok(user);
     }),
+    //create a new customer
     createCustomer: update([
         text,
         text,
@@ -100923,6 +100924,18 @@ var src_default = Canister({
         text
     ], Opt2(User), (id2)=>{
         return users.get(Principal3.fromText(id2));
+    }),
+    //Find a owner by id
+    readOwnerById: query([
+        text
+    ], Opt2(Owner), (id2)=>{
+        return owners.get(Principal3.fromText(id2));
+    }),
+    //Find a customer by id
+    readCustomerById: query([
+        text
+    ], Opt2(Customer), (id2)=>{
+        return customers.get(Principal3.fromText(id2));
     }),
     //delete a user by id
     deleteUser: update([

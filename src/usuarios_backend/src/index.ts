@@ -42,7 +42,7 @@ let bookings = StableBTreeMap<Principal, Booking>(0);
 let trackings = StableBTreeMap<Principal, Tracking>(0);
 
 export default Canister({
-    //Create a new user with an specific role
+    //Create a new owner
     createOwner: update([text, text, text, text, float64, float64], Result(User, RoleException), (id, email, phone, 
         role, latitude, longitude) => {
         console.log(role)
@@ -73,6 +73,7 @@ export default Canister({
         return Ok(user);
     }),
 
+    //create a new customer
     createCustomer: update([text, text, text, text, float64, float64, text, text, int64], Result(User, RoleException), (id, email, phone,
         role, latitude, longitude, vehicleType, vehiclePlate, vehicleSize) => {
 
@@ -127,6 +128,11 @@ export default Canister({
     //Find a user by id
     readUserById: query([text], Opt(User), (id) => {
         return users.get(Principal.fromText(id));
+    }),
+
+    //Find a owner by id
+    readOwnerById: query([text], Opt(Owner), (id) => {
+        return owners.get(Principal.fromText(id));
     }),
 
     //delete a user by id
