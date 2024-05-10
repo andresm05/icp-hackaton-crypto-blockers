@@ -89,10 +89,15 @@ const RegisterOwner = () => {
                         <div className="alert alert-primary">{true}</div>
                         :
                         <div></div>}
-                    <div className="card">
-                        <div className="card-header">
-                            Registrar Usuario
+               <div className="w-full h-screen flex justify-center ">
+                    <div  data-aos="fade-up"
+                  data-aos-delay="200" className="card w-[400px] h-[450px]  mt-10 bg-white rounded-lg bg-opacity-10 shadow-xl shadow-violet-800">
+                        <div className="card-header justify-center text-center mb-10 mt-5 ">
+                        <p className="text-2xl">
+                        Registro <span className="font-bold">Cliente</span>
+            </p> 
                         </div>
+                  
                         <div className="card-body">
 
 
@@ -107,11 +112,11 @@ const RegisterOwner = () => {
                                 </div>
                                 <div class="mb-5">
                                     <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tu dirección</label>
-                                    <input type="text" name="address"  class="form-input" required />
+                                    <input type="text" name="address"  class=" form-input" required />
                                 </div>
                                 <button type="submit" class="">Submit</button>
                             </form>
-
+                            </div>
                         </div>
                     </div>
                 </div>
