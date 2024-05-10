@@ -13,38 +13,58 @@ import {
     Variant,
     Vec
 } from 'azle';
+import { User } from './types/User.types';
+import { RoleException } from './exceptions';
+import {Booking, Customer, Owner} from './types';
 
-const User = Record({
-    id: Principal,
-    nombre: text,
-    primerApellido: text,
-    segundoApellido: text,
-    alias: text
-});
 type User = typeof User.tsType;
+type Owner = typeof Owner.tsType;
+type Customer = typeof Customer.tsType;
 
 const AplicationError = Variant({
     UserDoesNotExist: text
 });
 
+type RoleException = typeof RoleException.tsType;
+
 type AplicationError = typeof AplicationError.tsType;
 
 let users = StableBTreeMap<Principal, User>(0);
+let owners = StableBTreeMap<Principal, Owner>(0);
+let customers = StableBTreeMap<Principal, Customer>(0);
 
 export default Canister({
-    createUser: update([text, text, text, text], User, (nombre, primerApellido, segundoApellido, alias) => {
+    createUser: update([text, text, text], Result(User, RoleException), (email, phone, role) => {
         const id = generateId();
         const user: User = {
             id:id,
-            nombre: nombre,
-            primerApellido: primerApellido,
-            segundoApellido: segundoApellido,
-            alias: alias
+            email,
+            phone,
+            role
         };
+
+        if(role.toLocaleLowerCase() !== 'propietario' || role.toLocaleLowerCase() !== 'cliente'){
+            return Err({
+                    RoleException: role
+                })
+        }
 
         users.insert(user.id, user);
 
-        return user;
+        if(role.toLocaleLowerCase() === 'propietario'){
+            const owner: Owner = {
+                id,
+                booking: []
+            }}
+            else{
+                const customer: Customer = {
+                    id,
+                    vehicle: []
+            }
+            customers.insert(customer.id, customer);
+        }
+
+        return Ok(user);
     }),
     readUsers: query([], Vec(User), () => {
         return users.values();
@@ -67,9 +87,9 @@ export default Canister({
         return Ok(user);
     }),
     updateUser: update(
-        [text, text, text, text, text],
+        [text, text, text, text],
         Result(User, AplicationError),
-        (userId, nombre, primerApellido, segundoApellido, alias) => {
+        (userId, email, phone, role) => {
             const userOpt = users.get(Principal.fromText(userId));
 
             if ('None' in userOpt) {
@@ -79,10 +99,9 @@ export default Canister({
             }
             const newUser: User = {
                 id:Principal.fromText(userId),
-                nombre: nombre,
-                primerApellido: primerApellido,
-                segundoApellido: segundoApellido,
-                alias: alias
+                email,
+                phone,
+                role
             };
 
             users.remove(Principal.fromText(userId))
