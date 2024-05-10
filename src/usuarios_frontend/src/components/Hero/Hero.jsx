@@ -16,10 +16,8 @@ const Hero = ({ togglePlay }) => {
                   GAMES WITH OUR PLATFORM
                 </span> */}
               </h1>
-              <p data-aos="fade-up" data-aos-delay="300">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab
-                molestias quia exercitationem ex inventore labore beatae cumque
-                et quaerat voluptas?
+              <p data-aos="fade-up" className="text-2xl" data-aos-delay="300">
+              Sácale ganancia a ese parqueadero que tienes sin usar y olvídate de dolores de cabeza a la hora de parkear.
               </p>
               <div className="flex gap-6">
                 <button

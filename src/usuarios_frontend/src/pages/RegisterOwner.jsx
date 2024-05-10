@@ -43,14 +43,10 @@ const RegisterOwner = () => {
     }, []);
   
 
-
     useEffect(() => {
         console.log("principal", principal);
     }, [principal]);
 
-
-
-    
     const saveUser = async (e) => {
         e.preventDefault();
         const form = e.target
@@ -68,9 +64,7 @@ const RegisterOwner = () => {
         //     document.getElementById('btnUserList').click();
         // }
 
-
     }
-
 
     return (
         <div className=" ">

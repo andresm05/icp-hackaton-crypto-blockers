@@ -8,8 +8,7 @@ const Quotes = () => {
           data-aos="zoom-in"
           className="text-2xl sm:text-4xl font-bold max-w-[650px] mx-auto text-center font-parisienne"
         >
-          "Virtual reality is a medium, a means by which humans can share ideas
-          and experiences."
+          "En medellín si cabemos más con ParQApp te decimos donde"
         </h1>
       </div>
     </>
