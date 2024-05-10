@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 const UserCreate = () => {
     const [usuarios_backend] = useCanister("usuarios_backend");
-    const [loading, setLoading] = useState("");
+    // const [loading, setLoading] = useState("");
 
 
     const saveUser = async (e) => {
@@ -15,7 +15,7 @@ const UserCreate = () => {
         const segundoApellido = form.segundoApellido.value;
         const alias = form.alias.value;
 
-        setLoading("Loading...");
+        // setLoading("Loading...");
 
         await usuarios_backend.createUser(nombre, primerApellido, segundoApellido, alias);
         setLoading("");
@@ -33,9 +33,9 @@ const UserCreate = () => {
         <div className="row  mt-5">
             <div className="col-2"></div>
             <div className="col-8">
-                {loading != "" 
+                {true != "" 
                     ? 
-                    <div className="alert alert-primary">{loading}</div>
+                    <div className="alert alert-primary">{true}</div>
                     :
                     <div></div>
                 }
