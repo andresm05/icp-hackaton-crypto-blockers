@@ -13,7 +13,7 @@ import * as usuarios_backend from "declarations/usuarios_backend";
 // import Alumnos from "./Alumnos";
 // import AreaNueva from "./AreaNueva";
 
-const Menu = () => {
+const MenuCopy = () => {
   const {principal} = useConnect();
 
   function onElementAvailable(selector, callback) {
@@ -60,28 +60,18 @@ const Menu = () => {
         btn[0].textContent = 'Conectar II' ;
     else
         btn[0].textContent = 'Desconectar II' ;
-
-
   });
-
-  
   return (
-    
-            <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-        
-    
+            // <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
             <div className="container-fluid">
-                
-                
                     {/* <span className="fs-6 text">{principal}</span> */}
-                    <ConnectButton />
-                    <ConnectDialog />
-             
-                
 
+                    <Connect2ICProvider client={client}>
+             
+                    </Connect2ICProvider>
             </div>
        
-    </nav>
+
 
 
   )
@@ -93,7 +83,7 @@ const client = createClient({
       usuarios_backend,
     },
     providers: [
-      new InternetIdentity({ providerUrl: "http://bw4dl-smaaa-aaaaa-qaacq-cai.localhost:4943" })
+      new InternetIdentity({ providerUrl: "http://bkyz2-fmaaa-aaaaa-qaaaq-cai.localhost:4943" })
     ],
     globalProviderConfig: {
       /*
@@ -105,9 +95,6 @@ const client = createClient({
   });
 
 
-export default () => (
-  <Connect2ICProvider client={client}>
-    <Menu />
-  </Connect2ICProvider>
-)
+export default MenuCopy
+
 
