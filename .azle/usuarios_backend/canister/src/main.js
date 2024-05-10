@@ -30,7 +30,7 @@ function _extends() {
     };
     return _extends.apply(this, arguments);
 }
-var _class, _class1, _class2, _class3, _class4, _class5, _class6, _class7;
+var _class, _class1, _class2, _class3, _class4, _class5, _class6, _class7, _class8, _class9, _class10;
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -96866,10 +96866,10 @@ var Principal = class _Principal {
     static fromHex(hex) {
         return new this(fromHexString(hex));
     }
-    static fromText(text2) {
-        let maybePrincipal = text2;
-        if (text2.includes(JSON_KEY_PRINCIPAL)) {
-            const obj = JSON.parse(text2);
+    static fromText(text3) {
+        let maybePrincipal = text3;
+        if (text3.includes(JSON_KEY_PRINCIPAL)) {
+            const obj = JSON.parse(text3);
             if (JSON_KEY_PRINCIPAL in obj) {
                 maybePrincipal = obj[JSON_KEY_PRINCIPAL];
             }
@@ -98958,8 +98958,56 @@ var AzleVec = (_class2 = class {
 function Vec2(t) {
     return new AzleVec(t);
 }
+// node_modules/azle/src/lib/candid/types/primitive/bool.ts
+var AzleBool = (_class3 = class {
+    static toBytes(data) {
+        return encode3(this, data);
+    }
+    static fromBytes(bytes2) {
+        return decode3(this, bytes2);
+    }
+    static getIdl() {
+        return idl_exports.Bool;
+    }
+    constructor(){
+        this._azleKind = "AzleBool";
+    }
+}, _class3._azleKind = "AzleBool", _class3);
+var bool = AzleBool;
+// node_modules/azle/src/lib/candid/types/primitive/floats/float64.ts
+var AzleFloat64 = (_class4 = class {
+    static toBytes(data) {
+        return encode3(this, data);
+    }
+    static fromBytes(bytes2) {
+        return decode3(this, bytes2);
+    }
+    static getIdl() {
+        return idl_exports.Float64;
+    }
+    constructor(){
+        this._azleKind = "AzleFloat64";
+    }
+}, _class4._azleKind = "AzleFloat64", _class4);
+var float64 = AzleFloat64;
+// node_modules/azle/src/lib/candid/types/primitive/ints/int64.ts
+var AzleInt64 = (_class5 = class {
+    static toBytes(data) {
+        return encode3(this, data);
+    }
+    static fromBytes(bytes2) {
+        return decode3(this, bytes2);
+    }
+    static getIdl() {
+        return idl_exports.Int64;
+    }
+    constructor(){
+        this._azleKind = "AzleInt64";
+    }
+}, _class5._azleKind = "AzleInt64", _class5);
+var int64 = AzleInt64;
 // node_modules/azle/src/lib/candid/types/primitive/nats/nat.ts
-var AzleNat = (_class3 = class {
+var AzleNat = (_class6 = class {
     static toBytes(data) {
         return encode3(this, data);
     }
@@ -98972,10 +99020,10 @@ var AzleNat = (_class3 = class {
     constructor(){
         this._azleKind = "AzleNat";
     }
-}, _class3._azleKind = "AzleNat", _class3);
+}, _class6._azleKind = "AzleNat", _class6);
 var nat = AzleNat;
 // node_modules/azle/src/lib/candid/types/primitive/null.ts
-var AzleNull = (_class4 = class {
+var AzleNull = (_class7 = class {
     static toBytes(data) {
         return encode3(this, data);
     }
@@ -98988,10 +99036,10 @@ var AzleNull = (_class4 = class {
     constructor(){
         this._azleKind = "AzleNull";
     }
-}, _class4._azleKind = "AzleNull", _class4);
+}, _class7._azleKind = "AzleNull", _class7);
 var Null2 = AzleNull;
 // node_modules/azle/src/lib/candid/types/primitive/text.ts
-var AzleText = (_class5 = class {
+var AzleText = (_class8 = class {
     static toBytes(data) {
         return encode3(this, data);
     }
@@ -99004,7 +99052,7 @@ var AzleText = (_class5 = class {
     constructor(){
         this._azleKind = "AzleText";
     }
-}, _class5._azleKind = "AzleText", _class5);
+}, _class8._azleKind = "AzleText", _class8);
 var text = AzleText;
 // node_modules/azle/src/lib/candid/types/reference/service/canister_function/query_update.ts
 function createQueryMethods(canisterOptions) {
@@ -99160,7 +99208,7 @@ function Canister(canisterOptions) {
     return result;
 }
 // node_modules/azle/src/lib/candid/types/reference/principal.ts
-var Principal3 = (_class6 = class extends Principal {
+var Principal3 = (_class9 = class extends Principal {
     static toBytes(data) {
         return encode3(this, data);
     }
@@ -99170,7 +99218,7 @@ var Principal3 = (_class6 = class extends Principal {
     static getIdl(_parents) {
         return idl_exports.Principal;
     }
-}, _class6._azleKind = "Principal", _class6);
+}, _class9._azleKind = "Principal", _class9);
 // node_modules/azle/src/lib/candid/serde/decode.ts
 function decode3(candidType, data) {
     if (Array.isArray(candidType)) {
@@ -99398,7 +99446,7 @@ function encodeMultiple(candidTypes, data) {
     return new Uint8Array(idl_exports.encode(idls, values));
 }
 // node_modules/azle/src/lib/candid/types/primitive/nats/nat64.ts
-var AzleNat64 = (_class7 = class {
+var AzleNat64 = (_class10 = class {
     static toBytes(data) {
         return encode3(this, data);
     }
@@ -99411,7 +99459,7 @@ var AzleNat64 = (_class7 = class {
     constructor(){
         this._azleKind = "AzleNat64";
     }
-}, _class7._azleKind = "AzleNat64", _class7);
+}, _class10._azleKind = "AzleNat64", _class10);
 var nat64 = AzleNat64;
 // node_modules/azle/src/lib/ic/call_raw.ts
 function callRaw(canisterId, method2, argsRaw, payment) {
@@ -100652,13 +100700,13 @@ var Principal4 = class _Principal {
     static fromHex(hex) {
         return new this(fromHexString2(hex));
     }
-    static fromText(text2) {
-        const canisterIdNoDash = text2.toLowerCase().replace(/-/g, "");
+    static fromText(text3) {
+        const canisterIdNoDash = text3.toLowerCase().replace(/-/g, "");
         let arr = decode4(canisterIdNoDash);
         arr = arr.slice(4, arr.length);
         const principal = new this(arr);
-        if (principal.toText() !== text2) {
-            throw new Error(`Principal "${principal.toText()}" does not have a valid checksum (original value "${text2}" may not be a valid Principal ID).`);
+        if (principal.toText() !== text3) {
+            throw new Error(`Principal "${principal.toText()}" does not have a valid checksum (original value "${text3}" may not be a valid Principal ID).`);
         }
         return principal;
     }
@@ -100728,86 +100776,301 @@ var Principal4 = class _Principal {
         this._isPrincipal = true;
     }
 };
-// src/usuarios_backend/src/index.ts
+// src/usuarios_backend/src/types/User.types.ts
 var User = Record2({
     id: Principal3,
-    nombre: text,
-    primerApellido: text,
-    segundoApellido: text,
-    alias: text
+    email: text,
+    phone: text,
+    role: text
 });
+// src/usuarios_backend/src/exceptions/AppException.ts
 var AplicationError = Variant2({
-    UserDoesNotExist: text
+    AppRuntimeError: text
 });
+// src/usuarios_backend/src/exceptions/RoleException.ts
+var RoleException = Variant2({
+    RoleException: text
+});
+// src/usuarios_backend/src/types/Booking.types.ts
+var Booking = Record2({
+    id: Principal3,
+    size: int64,
+    fee_per_hour: float64,
+    available: bool
+});
+// src/usuarios_backend/src/types/Owner.types.ts
+var Owner = Record2({
+    id: Principal3,
+    bookings: Vec2(Booking),
+    address: text
+});
+// src/usuarios_backend/src/types/Vehicle.types.ts
+var Vehicle = Record2({
+    id: Principal3,
+    plate: text,
+    size: int64,
+    type: text
+});
+// src/usuarios_backend/src/types/Customer.types.ts
+var Customer = Record2({
+    id: Principal3,
+    vehicle: Vehicle,
+    address: text
+});
+// src/usuarios_backend/src/types/Tracking.types.ts
+var Tracking = Record2({
+    id: Principal3,
+    owner: Owner,
+    booking: Booking,
+    customer: Customer,
+    initialDate: text,
+    finalDate: text
+});
+// src/usuarios_backend/src/utils/GenerateId.ts
+var generateId = ()=>{
+    const randomBytes = new Array(29).fill(0).map((_)=>Math.floor(Math.random() * 256));
+    return Principal3.fromUint8Array(Uint8Array.from(randomBytes));
+};
+// src/usuarios_backend/src/index.ts
 var users = StableBTreeMap(0);
+var owners = StableBTreeMap(0);
+var customers = StableBTreeMap(0);
+var bookings = StableBTreeMap(0);
+var trackings = StableBTreeMap(0);
 var src_default = Canister({
+    //Create a new user with an specific role
     createUser: update([
         text,
         text,
         text,
-        text
-    ], User, (nombre, primerApellido, segundoApellido, alias)=>{
+        text,
+        text,
+        text,
+        int64
+    ], Result(User, RoleException), (email, phone, role, address, vehicleType, vehiclePlate, size)=>{
         const id2 = generateId();
         const user = {
             id: id2,
-            nombre,
-            primerApellido,
-            segundoApellido,
-            alias
+            email,
+            phone,
+            role
         };
+        if (role.toLocaleLowerCase() !== "propietario" || role.toLocaleLowerCase() !== "cliente") {
+            return Err({
+                RoleException: role
+            });
+        }
         users.insert(user.id, user);
-        return user;
+        if (role.toLocaleLowerCase() === "propietario") {
+            const owner = {
+                id: id2,
+                bookings: [],
+                address
+            };
+            owners.insert(owner.id, owner);
+        } else {
+            const vehicle = {
+                id: generateId(),
+                type: vehicleType,
+                plate: vehiclePlate,
+                size
+            };
+            const customer = {
+                id: id2,
+                vehicle,
+                address
+            };
+            customers.insert(customer.id, customer);
+        }
+        return Ok(user);
     }),
+    //Read all users
     readUsers: query([], Vec2(User), ()=>{
         return users.values();
     }),
+    //Find a user by id
     readUserById: query([
         text
     ], Opt2(User), (id2)=>{
         return users.get(Principal3.fromText(id2));
     }),
+    //delete a user by id
     deleteUser: update([
         text
     ], Result(User, AplicationError), (id2)=>{
         const userOpt = users.get(Principal3.fromText(id2));
         if ("None" in userOpt) {
             return Err({
-                UserDoesNotExist: id2
+                AppRuntimeError: id2
             });
+        }
+        if (userOpt.Some.role.toLocaleLowerCase() === "propietario") {
+            owners.remove(Principal3.fromText(id2));
+        } else {
+            customers.remove(Principal3.fromText(id2));
         }
         const user = userOpt.Some;
         users.remove(user.id);
         return Ok(user);
     }),
+    //Update a user by id
     updateUser: update([
         text,
         text,
         text,
         text,
         text
-    ], Result(User, AplicationError), (userId, nombre, primerApellido, segundoApellido, alias)=>{
+    ], Result(User, AplicationError), (userId, email, phone, role, address)=>{
         const userOpt = users.get(Principal3.fromText(userId));
         if ("None" in userOpt) {
             return Err({
-                UserDoesNotExist: userId
+                AppRuntimeError: userId
             });
         }
         const newUser = {
             id: Principal3.fromText(userId),
-            nombre,
-            primerApellido,
-            segundoApellido,
-            alias
+            email,
+            phone,
+            role
         };
+        if (role.toLocaleLowerCase() === "propietario") {
+            const owner = owners.get(Principal3.fromText(userId));
+            if (owner.Some) {
+                owners.remove(Principal3.fromText(userId));
+                owners.insert(Principal3.fromText(userId), {
+                    id: Principal3.fromText(userId),
+                    bookings: owner.Some.bookings,
+                    address
+                });
+            }
+        } else {
+            const customer = customers.get(Principal3.fromText(userId));
+            if (customer.Some) {
+                customers.remove(Principal3.fromText(userId));
+                customers.insert(Principal3.fromText(userId), {
+                    id: Principal3.fromText(userId),
+                    vehicle: customer.Some.vehicle,
+                    address
+                });
+            }
+        }
         users.remove(Principal3.fromText(userId));
         users.insert(Principal3.fromText(userId), newUser);
         return Ok(newUser);
+    }),
+    //Create a new booking for a owner
+    createBooking: update([
+        text,
+        int64,
+        bool,
+        float64
+    ], Result(Booking, AplicationError), (idOwner, size, available, fee_per_hour)=>{
+        const owner = owners.get(Principal3.fromText(idOwner));
+        if ("None" in owner) {
+            return Err({
+                AppRuntimeError: "User is not an owner"
+            });
+        }
+        const bookingId = generateId();
+        const booking = {
+            id: bookingId,
+            size,
+            available,
+            fee_per_hour
+        };
+        const ownerFound = owner.Some;
+        ownerFound.bookings.push(booking);
+        bookings.insert(booking.id, booking);
+        return Ok(booking);
+    }),
+    //assign a booking to a customer
+    bookingAssignment: update([
+        text,
+        text,
+        text,
+        text,
+        text
+    ], Result(Booking, AplicationError), (idBooking, idCustomer, idOwner, initial_date, final_date)=>{
+        const booking = bookings.get(Principal3.fromText(idBooking));
+        const customer = customers.get(Principal3.fromText(idCustomer));
+        const owner = owners.get(Principal3.fromText(idOwner));
+        if ("None" in booking) {
+            return Err({
+                AppRuntimeError: "Booking not found"
+            });
+        }
+        if ("None" in customer) {
+            return Err({
+                AppRuntimeError: "Customer not found"
+            });
+        }
+        if ("None" in owner) {
+            return Err({
+                AppRuntimeError: "Owner not found"
+            });
+        }
+        const bookingFound = booking.Some;
+        const customerFound = customer.Some;
+        const ownerFound = owner.Some;
+        if (bookingFound.available === false) {
+            return Err({
+                AppRuntimeError: "Booking not available"
+            });
+        }
+        if (bookingFound.size > customerFound.vehicle.size) {
+            return Err({
+                AppRuntimeError: "Vehicle size not compatible"
+            });
+        }
+        bookingFound.available = false;
+        const tracking = {
+            id: generateId(),
+            booking: bookingFound,
+            customer: customerFound,
+            owner: ownerFound,
+            initialDate: initial_date,
+            finalDate: final_date
+        };
+        trackings.insert(tracking.id, tracking);
+        return Ok(bookingFound);
+    }),
+    //change booking state or fee_per_hour
+    changeBookingState: update([
+        text,
+        text,
+        bool,
+        float64
+    ], Result(Booking, AplicationError), (idBooking, userId, available, fee_per_hour)=>{
+        const booking = bookings.get(Principal3.fromText(idBooking));
+        const userFound = users.get(Principal3.fromText(userId)).Some;
+        if ((userFound == null ? void 0 : userFound.role.toLocaleLowerCase()) !== "propietario") {
+            return Err({
+                AppRuntimeError: "User is not an owner"
+            });
+        }
+        const ownerFound = owners.get(Principal3.fromText(userId)).Some;
+        if ("None" in booking) {
+            return Err({
+                AppRuntimeError: "Booking not found"
+            });
+        }
+        const bookingFound = booking.Some;
+        bookingFound.available = available;
+        bookingFound.fee_per_hour = fee_per_hour;
+        bookings.remove(Principal3.fromText(idBooking));
+        bookings.insert(Principal3.fromText(idBooking), bookingFound);
+        ownerFound == null ? void 0 : ownerFound.bookings.forEach((element, index)=>{
+            if (element.id === bookingFound.id) {
+                ownerFound.bookings[index] = bookingFound;
+            }
+        });
+        if (ownerFound) {
+            owners.remove(Principal3.fromText(userId));
+            owners.insert(Principal3.fromText(userId), ownerFound);
+        }
+        return Ok(bookingFound);
     })
 });
-function generateId() {
-    const randomBytes = new Array(29).fill(0).map((_)=>Math.floor(Math.random() * 256));
-    return Principal3.fromUint8Array(Uint8Array.from(randomBytes));
-}
 // <stdin>
 globalThis.process = {
     env: {}
