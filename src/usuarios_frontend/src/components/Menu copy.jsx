@@ -5,15 +5,15 @@ import { ConnectButton, ConnectDialog, Connect2ICProvider } from "@connect2ic/re
 import {  useConnect } from "@connect2ic/react";
 import {BrowserRouter, Route, Link, Routes} from 'react-router-dom';
 import Home from "./Home";
-import Users from "./Users";
-import UserCreate from "./UserCreate";
+import Users from "../pages/Users";
+import UserCreate from "../pages/UserCreate";
 import * as usuarios_backend from "declarations/usuarios_backend";
 
 // import Programas from "./Programas";
 // import Alumnos from "./Alumnos";
 // import AreaNueva from "./AreaNueva";
 
-const MenuCopy = () => {
+const Menu = () => {
   const {principal} = useConnect();
 
   function onElementAvailable(selector, callback) {
@@ -60,18 +60,20 @@ const MenuCopy = () => {
         btn[0].textContent = 'Conectar II' ;
     else
         btn[0].textContent = 'Desconectar II' ;
+
+
   });
+
+  
   return (
-            // <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+            <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
             <div className="container-fluid">
                     {/* <span className="fs-6 text">{principal}</span> */}
-
-                    <Connect2ICProvider client={client}>
-             
-                    </Connect2ICProvider>
+                    <ConnectButton />
+                    <ConnectDialog />
             </div>
        
-
+    </nav>
 
 
   )
@@ -83,7 +85,7 @@ const client = createClient({
       usuarios_backend,
     },
     providers: [
-      new InternetIdentity({ providerUrl: "http://bkyz2-fmaaa-aaaaa-qaaaq-cai.localhost:4943" })
+      new InternetIdentity({ providerUrl: "http://bw4dl-smaaa-aaaaa-qaacq-cai.localhost:4943" })
     ],
     globalProviderConfig: {
       /*
@@ -95,6 +97,9 @@ const client = createClient({
   });
 
 
-export default MenuCopy
-
+export default () => (
+  <Connect2ICProvider client={client}>
+    <Menu />
+  </Connect2ICProvider>
+)
 

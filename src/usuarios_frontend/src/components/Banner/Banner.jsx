@@ -9,7 +9,7 @@ const Banner = ({ togglePlay }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 place-items-center">
           {/* image section */}
           <div data-aos="fade-up" data-aos-once="false">
-            <img src={BannerPng} alt="" className="w-full max-w-[400px]" />
+            <img src={BannerPng} alt="" className="w-full max-w-[600px]" />
           </div>
           {/* text content section */}
           <div className=" lg:pr-20 relative">
@@ -19,7 +19,7 @@ const Banner = ({ togglePlay }) => {
                 data-aos-delay="300"
                 className="text-4xl font-semibold"
               >
-                GET READY TO ENJ0Y VR{" "}
+                ParQApp{" "}
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
                   Movies WITH OUR PLATFORM
                 </span>

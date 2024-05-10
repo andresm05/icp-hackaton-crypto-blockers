@@ -11,8 +11,8 @@ import { ConnectButton, ConnectDialog, Connect2ICProvider } from "@connect2ic/re
 import {  useConnect } from "@connect2ic/react";
 import {BrowserRouter, Route, Link, Routes} from 'react-router-dom';
 import Home from "../Home";
-import Users from "../Users";
-import UserCreate from "../UserCreate";
+import Users from "../../pages/Users";
+import UserCreate from "../../pages/UserCreate";
 import * as usuarios_backend from "declarations/usuarios_backend";
 import Login from "../../utils/Login";
 
@@ -24,12 +24,12 @@ const Navbar = () => {
   const toggleMenu = () => setShowMenu(!showMenu);
   return (
     // <BrowserRouter>
-    <div className="relative z-[9999] text-black dark:text-white duration-300">
+    <div className="relative z-[9999] text-black dark:text-white duration-300 mt-2">
       <div className="container py-2 md:py-0">
         <div className="flex justify-between items-center">
           {/* logo section */}
           <div className="flex items-center gap-3">
-            <img src={Logo} alt="" className="h-16" />
+            <img src={Logo} alt="" className="h-16 bg-white rounded-lg p-1" />
             <p className="text-3xl">
               VR <span className="font-bold">World</span>
             </p>
@@ -39,11 +39,11 @@ const Navbar = () => {
             <ul className="flex items-center gap-8">
 
               <Link to='/' className="text-xl font-semibold hover:text-primary py-2 hover:border-b-2 hover:border-secondary transition-colors duration-500">Inicio</Link>
-                    <Link to='/nuevo-usuario'className="text-xl font-semibold hover:text-primary py-2 hover:border-b-2 hover:border-secondary transition-colors duration-500" >Nuevo</Link>
+                    <Link to='/nuevo-usuario'className="text-xl font-semibold hover:text-primary py-2 hover:border-b-2 hover:border-secondary transition-colors duration-500" >Registro</Link>
                     <Link to='/usuarios'className="text-xl font-semibold hover:text-primary py-2 hover:border-b-2 hover:border-secondary transition-colors duration-500" id="btnUserList">Usuarios</Link>
                     {/* <span className="fs-6 text">{principal}</span>
                     console.log(principal) */}
-           
+
                     <ConnectButton />
                     <ConnectDialog />
               {/* Darkmode feature */}
@@ -72,7 +72,7 @@ const Navbar = () => {
           </div>
 
         </div>
-        
+              
       </div>
     </div>
 
