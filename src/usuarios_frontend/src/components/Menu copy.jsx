@@ -37,7 +37,7 @@ const Menu = () => {
     //     "margin-left": "4px"
     // }
     
-
+  
     Object.assign(btn2[0].style,custom_style);
 
     const texto = Array.from(document.getElementsByClassName('button-label'));

@@ -39,7 +39,7 @@ const Features = () => {
             data-aos="fade-up"
             className="text-3xl font-semibold text-center sm:text-4xl mb-12"
           >
-            Escoge Que quieres ser
+            Escoge tu rol
           </h1>
 
           {/* card section */}
