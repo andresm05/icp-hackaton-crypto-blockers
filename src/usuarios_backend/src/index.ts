@@ -198,7 +198,7 @@ export default Canister({
     ),
 
     //Create a new booking for a owner
-    createBooking: update([text,int64, bool, float64 ], Result(Booking, AplicationError), (idOwner,size, available, fee_per_hour) => {
+    createBooking: update([text, int64, float64 ], Result(Booking, AplicationError), (idOwner,size,fee_per_hour) => {
         const owner = owners.get(Principal.fromText(idOwner));
 
         if('None' in owner){
@@ -211,7 +211,7 @@ export default Canister({
         const booking: Booking = {
             id: bookingId,
             size,
-            available,
+            available: true,
             fee_per_hour,
         };
 

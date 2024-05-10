@@ -1,7 +1,7 @@
 service: () -> {
     bookingAssignment: (text, text, text, text, text) -> (variant {Ok:record {id:principal; fee_per_hour:float64; size:int64; available:bool}; Err:variant {AppRuntimeError:text}});
     changeBookingState: (text, text, bool, float64) -> (variant {Ok:record {id:principal; fee_per_hour:float64; size:int64; available:bool}; Err:variant {AppRuntimeError:text}});
-    createBooking: (text, int64, bool, float64) -> (variant {Ok:record {id:principal; fee_per_hour:float64; size:int64; available:bool}; Err:variant {AppRuntimeError:text}});
+    createBooking: (text, int64, float64) -> (variant {Ok:record {id:principal; fee_per_hour:float64; size:int64; available:bool}; Err:variant {AppRuntimeError:text}});
     createCustomer: (text, text, text, text, text, text, text, int64) -> (variant {Ok:record {id:principal; role:text; email:text; phone:text}; Err:variant {RoleException:text}});
     createOwner: (text, text, text, text, text) -> (variant {Ok:record {id:principal; role:text; email:text; phone:text}; Err:variant {RoleException:text}});
     deleteUser: (text) -> (variant {Ok:record {id:principal; role:text; email:text; phone:text}; Err:variant {AppRuntimeError:text}});

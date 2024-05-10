@@ -100986,9 +100986,8 @@ var src_default = Canister({
     createBooking: update([
         text,
         int64,
-        bool,
         float64
-    ], Result(Booking, AplicationError), (idOwner, size, available, fee_per_hour)=>{
+    ], Result(Booking, AplicationError), (idOwner, size, fee_per_hour)=>{
         const owner = owners.get(Principal3.fromText(idOwner));
         if ("None" in owner) {
             return Err({
@@ -100999,7 +100998,7 @@ var src_default = Canister({
         const booking = {
             id: bookingId,
             size,
-            available,
+            available: true,
             fee_per_hour
         };
         const ownerFound = owner.Some;
