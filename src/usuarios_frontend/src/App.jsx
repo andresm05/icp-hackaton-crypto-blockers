@@ -10,7 +10,11 @@ import React, { useState, useEffect } from "react";
 // import PopupPlayer from "./components/PopupPlayer/PopupPlayer";
 // import Menu from "./components/Menu";
 import {BrowserRouter, Route, Link, Routes} from 'react-router-dom';
+import { ConnectButton, ConnectDialog, Connect2ICProvider } from "@connect2ic/react"
 
+import { createClient } from "@connect2ic/core"
+import { InternetIdentity } from "@connect2ic/core/providers/internet-identity"
+import {  useConnect } from "@connect2ic/react";
 import UserCreate from "./components/UserCreate";
 import Users from "./components/Users";
 import HomePage from "./pages/HomePage";
@@ -22,6 +26,8 @@ const App = () => {
 
   return (
     <main className="overflow-x-hidden bg-white dark:bg-black text-black dark:text-white duration-300">
+          <Connect2ICProvider >
+
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -32,9 +38,11 @@ const App = () => {
         </Routes>
 
 
-
         
       </BrowserRouter>
+      
+      </Connect2ICProvider>
+
     </main>
   );
 };

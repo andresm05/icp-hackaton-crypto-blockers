@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 
 const UserCreate = () => {
-    const [usuarios_backend] = useCanister("usuarios_backend");
+    // const [usuarios_backend] = useCanister("usuarios_backend");
     // const [loading, setLoading] = useState("");
 
 
@@ -17,12 +17,12 @@ const UserCreate = () => {
 
         // setLoading("Loading...");
 
-        await usuarios_backend.createUser(nombre, primerApellido, segundoApellido, alias);
-        setLoading("");
+        // await usuarios_backend.createUser(nombre, primerApellido, segundoApellido, alias);
+        // setLoading("");
 
-        {
-            document.getElementById('btnUserList').click();
-        }
+        // {
+        //     document.getElementById('btnUserList').click();
+        // }
 
         
     }
