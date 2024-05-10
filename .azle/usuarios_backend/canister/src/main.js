@@ -100810,7 +100810,7 @@ var Vehicle = Record2({
     id: Principal3,
     plate: text,
     size: int64,
-    type: text
+    name: text
 });
 // src/usuarios_backend/src/types/Customer.types.ts
 var Customer = Record2({
@@ -100896,7 +100896,7 @@ var src_default = Canister({
         };
         const vehicle = {
             id: generateId(),
-            type: vehicleType,
+            name: vehicleType,
             plate: vehiclePlate,
             size: vehicleSize
         };

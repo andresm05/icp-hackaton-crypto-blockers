@@ -93,7 +93,7 @@ export default Canister({
 
         const vehicle: Vehicle = {
             id: generateId(),
-            type: vehicleType,
+            name: vehicleType,
             plate: vehiclePlate,
             size: vehicleSize
         }
@@ -133,6 +133,11 @@ export default Canister({
     //Find a owner by id
     readOwnerById: query([text], Opt(Owner), (id) => {
         return owners.get(Principal.fromText(id));
+    }),
+
+    //Find a customer by id
+    readCustomerById: query([text], Opt(Customer), (id) => {
+        return customers.get(Principal.fromText(id));
     }),
 
     //delete a user by id

@@ -4,5 +4,5 @@ export const Vehicle = Record({
     id: Principal,
     plate: text,
     size: int64,
-    type: text,
+    name: text,
 });
