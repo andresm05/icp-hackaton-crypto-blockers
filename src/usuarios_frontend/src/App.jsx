@@ -10,7 +10,7 @@ import UserCreate from "./pages/UserCreate";
 import Users from "./pages/Users";
 import HomePage from "./pages/HomePage";
 import RegisterOwner from "./pages/RegisterOwner";
-
+import Booking from "./pages/Booking";
 
 import "aos/dist/aos.css";
 
@@ -30,6 +30,7 @@ const App = () => {
           <Route path="/usuarios" element={<Users />} />
           <Route path="/nuevo-usuario" element={<UserCreate />} />
           <Route path="/Register-owner" element={<RegisterOwner />} />
+          <Route path="/Booking" element={<Booking />} />
           {/* Ruta para el componente Login */}
           {/* <Route path="/login" element={<Login />} /> */}
         </Routes>
