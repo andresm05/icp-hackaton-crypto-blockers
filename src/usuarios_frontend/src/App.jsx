@@ -11,7 +11,7 @@ import Users from "./pages/Users";
 import HomePage from "./pages/HomePage";
 import RegisterOwner from "./pages/RegisterOwner";
 import Booking from "./pages/Booking";
-
+import RegisterParker from "./pages/RegisterParker";
 import "aos/dist/aos.css";
 
 const App = () => {
@@ -29,7 +29,9 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/usuarios" element={<Users />} />
           <Route path="/nuevo-usuario" element={<UserCreate />} />
+          {/* <Route path="/nuevo-usuario" element={<UserCreate />} /> */}
           <Route path="/Register-owner" element={<RegisterOwner />} />
+          <Route path="/Register-parker" element={<RegisterParker />} />
           <Route path="/Booking" element={<Booking />} />
           {/* Ruta para el componente Login */}
           {/* <Route path="/login" element={<Login />} /> */}

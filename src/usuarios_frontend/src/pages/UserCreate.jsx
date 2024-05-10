@@ -9,8 +9,13 @@ import LayoutNavbar from "../layouts/LayoutNavbar";
 import AOS from "aos";
 
 const UserCreate = () => {
+  
+  const { principal } = useConnect();
 
-    const { principal } = useConnect();
+
+  const [esOwner, setIsOwner] = useState();
+  
+  const [isPlay, setIsPlay] = useState(false);
     const [usuarios_backend] = useCanister("usuarios_backend");
     // const [loading, setLoading] = useState("");
     const [user, setUser] = useState({
@@ -21,8 +26,7 @@ const UserCreate = () => {
         phone: "",
         role: "",
     })
-        
-    const [isPlay, setIsPlay] = useState(false);
+    
     
     const togglePlay = () => {
       setIsPlay(!isPlay);
@@ -66,11 +70,12 @@ const UserCreate = () => {
 
 
     return (
-        <><LayoutNavbar />
+        <><LayoutNavbar  />
+        {console.log("este es el owner, será?"  , esOwner)}
         {/* <Quotes />
       <Banner togglePlay={togglePlay} />
       <Banner2 togglePlay={togglePlay} /> */}
-      <FeaturesRol />
+      <FeaturesRol esOwner = {esOwner} setEsOwner = {setIsOwner} />
       
         </>
 
