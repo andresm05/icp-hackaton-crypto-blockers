@@ -14,7 +14,6 @@ const Login = () => {
 
     const {principal} = useConnect();
 
-    console.log("este es el principal", principal)
     function onElementAvailable(selector, callback) {
       const observer = new MutationObserver(mutations => {
         if (document.querySelector(selector)) {
@@ -67,7 +66,11 @@ const Login = () => {
     <div>             
        {/* <Connect2ICProvider client={client}> */}
       <ConnectButton />
+    <div clas="bg-white">
+
     <ConnectDialog />
+
+    </div>
     {/* </Connect2ICProvider> */}
     </div>
   )

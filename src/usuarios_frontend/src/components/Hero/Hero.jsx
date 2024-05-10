@@ -25,18 +25,18 @@ const Hero = ({ togglePlay }) => {
                   data-aos-delay="500"
                   className="primary-btn"
                 >
-                  Get Started
+                  Unete ya!
                 </button>
-                <button
+                {/* <button
                   data-aos="fade-up"
                   data-aos-delay="700"
-                  onClick={togglePlay}
+                  // onClick={togglePlay}
                   className="flex items-center gap-2"
                 >
                   {" "}
                   <BiPlayCircle className="text-3xl" />
-                  See Demo
-                </button>
+                  
+                </button> */}
               </div>
             </div>
             {/* image section */}
