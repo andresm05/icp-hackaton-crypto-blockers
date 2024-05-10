@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 // import LayoutNavbar from "../layouts/LayoutNavbar";
 import LayoutNavbar from "../layouts/LayoutNavbar";
 import AOS from "aos";
+import Swal from "sweetalert2";
 
 const RegisterOwner = () => {
 
@@ -42,8 +43,23 @@ const RegisterOwner = () => {
         const phone = form.phone.value;
         const latitude = Math.random() * (6.37-6.15) + 6.37
         const longitude = Math.random() * (-75.42+75.65) - 75.65
-        const userSaved = await usuarios_backend.createOwner(principal, email, phone, "Propietario", latitude,longitude);
-        console.log(userSaved);
+        try{
+            const userSaved = await usuarios_backend.createOwner(principal, email, phone, "Propietario", latitude,longitude);
+            Swal.fire({
+                icon: 'success',
+                title: 'Registro exitoso',
+                text: 'Bienvenido a ParkApp!',
+                footer: 'Ahora puedes acceder a nuestros servicios'
+                })
+        }catch(error){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Algo salió mal!',
+                footer: 'Por favor intenta de nuevo'
+                })
+        }
+
 
         // setLoading("Loading...");
         // await usuarios_backend.createUser(nombre, primerApellido, segundoApellido, alias);
@@ -109,11 +125,6 @@ const RegisterOwner = () => {
                                 <div class="mb-5  mx-5">
                                     <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tu dispositivo móvil</label>
                                     <input type="number" name="phone" id="password" class="form-input" required />
-                                </div>
-                                <button type="submit"  className="mx-5 form-send-button mt-4">Submit</button>
-                                <div className="mb-5  mx-5">
-                                    <label for="address" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tu dirección</label>
-                                    <input type="text" name="address"  className="form-input" required />
                                 </div>
                                 <button type="submit" className="mx-5 form-send-button mt-4">Submit</button>
                             </form>
