@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaCameraRetro } from "react-icons/fa";
 import { GiNotebook } from "react-icons/gi";
 import { SlNote } from "react-icons/sl";
@@ -34,6 +34,9 @@ const FeaturesData = [
 ];
 
 const Features = () => {
+
+  const [isOwner, setIsOwner]= useState(false)
+
   return (
     <>
       <div className="container py-14 sm:min-h-[600px]">

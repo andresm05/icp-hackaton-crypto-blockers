@@ -10,9 +10,6 @@ import AOS from "aos";
 
 const UserCreate = () => {
 
-
-
-    
     const { principal } = useConnect();
     const [usuarios_backend] = useCanister("usuarios_backend");
     // const [loading, setLoading] = useState("");
@@ -25,7 +22,6 @@ const UserCreate = () => {
         role: "",
     })
         
-
     const [isPlay, setIsPlay] = useState(false);
     
     const togglePlay = () => {
@@ -43,14 +39,11 @@ const UserCreate = () => {
     }, []);
   
 
-
     useEffect(() => {
         console.log("principal", principal);
     }, [principal]);
 
 
-
-    
     const saveUser = async (e) => {
         e.preventDefault();
         const form = e.target
