@@ -10,7 +10,7 @@ const FeaturesData = [
       <FaCameraRetro className="text-5xl text-primary group-hover:text-black duration-300" />
     ),
     link: "#",
-    description: "Con esta subscripción los propietario pueden listar y administrar sus espacios de estacionamiento en la aplicación.",
+    description: "Ofrecemos tres opciones de suscripción para propietrios de parqueaderos: mensual, semestral y anual. Cada suscripción proporciona acceso completo a todas las funciones de ParQApp durante el período seleccionado.",
     precio: "0",
     aosDelay: "300",
   },
@@ -20,7 +20,7 @@ const FeaturesData = [
       <GiNotebook className="text-5xl text-primary group-hover:text-black duration-300" />
     ),
     link: "#",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    description: "Los propietarios solo pagarán comisión por transacción alquilando sus espacios de estacionamiento a través de ParQApp. Esto significa que una pequeña tarifa se aplicará solo cuando se complete una reserva, lo que garantiza una transacción justa y transparente",
     aosDelay: "500",
   },
 
