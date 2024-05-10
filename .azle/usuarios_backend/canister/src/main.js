@@ -100839,7 +100839,36 @@ var bookings = StableBTreeMap(0);
 var trackings = StableBTreeMap(0);
 var src_default = Canister({
     //Create a new user with an specific role
-    createUser: update([
+    createOwner: update([
+        text,
+        text,
+        text,
+        text,
+        text
+    ], Result(User, RoleException), (id2, email, phone, role, address)=>{
+        console.log(role);
+        const user = {
+            id: Principal3.fromText(id2),
+            email,
+            phone,
+            role
+        };
+        if (role.toLowerCase() !== "propietario") {
+            return Err({
+                RoleException: "User is not an owner"
+            });
+        }
+        users.insert(user.id, user);
+        const owner = {
+            id: Principal3.fromText(id2),
+            bookings: [],
+            address
+        };
+        owners.insert(owner.id, owner);
+        return Ok(user);
+    }),
+    createCustomer: update([
+        text,
         text,
         text,
         text,
@@ -100847,41 +100876,36 @@ var src_default = Canister({
         text,
         text,
         int64
-    ], Result(User, RoleException), (email, phone, role, address, vehicleType, vehiclePlate, size)=>{
-        const id2 = generateId();
+    ], Result(User, RoleException), (id2, email, phone, role, address, vehicleType, vehiclePlate, vehicleSize)=>{
+        if (role.toLowerCase() !== "cliente") {
+            return Err({
+                RoleException: "User is not a customer"
+            });
+        }
         const user = {
-            id: id2,
+            id: Principal3.fromText(id2),
             email,
             phone,
             role
         };
-        if (role.toLocaleLowerCase() !== "propietario" || role.toLocaleLowerCase() !== "cliente") {
+        const vehicle = {
+            id: generateId(),
+            type: vehicleType,
+            plate: vehiclePlate,
+            size: vehicleSize
+        };
+        if (role.toLowerCase() !== "cliente") {
             return Err({
-                RoleException: role
+                RoleException: "User is not a customer"
             });
         }
         users.insert(user.id, user);
-        if (role.toLocaleLowerCase() === "propietario") {
-            const owner = {
-                id: id2,
-                bookings: [],
-                address
-            };
-            owners.insert(owner.id, owner);
-        } else {
-            const vehicle = {
-                id: generateId(),
-                type: vehicleType,
-                plate: vehiclePlate,
-                size
-            };
-            const customer = {
-                id: id2,
-                vehicle,
-                address
-            };
-            customers.insert(customer.id, customer);
-        }
+        const customer = {
+            id: Principal3.fromText(id2),
+            vehicle,
+            address
+        };
+        customers.insert(customer.id, customer);
         return Ok(user);
     }),
     //Read all users
@@ -100904,7 +100928,7 @@ var src_default = Canister({
                 AppRuntimeError: id2
             });
         }
-        if (userOpt.Some.role.toLocaleLowerCase() === "propietario") {
+        if (userOpt.Some.role.toLowerCase() === "propietario") {
             owners.remove(Principal3.fromText(id2));
         } else {
             customers.remove(Principal3.fromText(id2));
@@ -100933,7 +100957,7 @@ var src_default = Canister({
             phone,
             role
         };
-        if (role.toLocaleLowerCase() === "propietario") {
+        if (role.toLowerCase() === "propietario") {
             const owner = owners.get(Principal3.fromText(userId));
             if (owner.Some) {
                 owners.remove(Principal3.fromText(userId));
@@ -101043,7 +101067,7 @@ var src_default = Canister({
     ], Result(Booking, AplicationError), (idBooking, userId, available, fee_per_hour)=>{
         const booking = bookings.get(Principal3.fromText(idBooking));
         const userFound = users.get(Principal3.fromText(userId)).Some;
-        if ((userFound == null ? void 0 : userFound.role.toLocaleLowerCase()) !== "propietario") {
+        if ((userFound == null ? void 0 : userFound.role.toLowerCase()) !== "propietario") {
             return Err({
                 AppRuntimeError: "User is not an owner"
             });

@@ -43,16 +43,17 @@ let trackings = StableBTreeMap<Principal, Tracking>(0);
 
 export default Canister({
     //Create a new user with an specific role
-    createOwner: update([Principal, text, text, text, text], Result(User, RoleException), (id, email, phone, 
+    createOwner: update([text, text, text, text, text], Result(User, RoleException), (id, email, phone, 
         role, address) => {
+        console.log(role)
         const user: User = {
-            id,
+            id: Principal.fromText(id),
             email,
             phone,
             role
         };
 
-        if(role.toLocaleLowerCase() !== 'propietario'){
+        if(role.toLowerCase() !== 'propietario'){
             return Err({
                     RoleException: 'User is not an owner'
                 })
@@ -60,7 +61,7 @@ export default Canister({
         users.insert(user.id, user);
 
             const owner: Owner = {
-                id,
+                id: Principal.fromText(id),
                 bookings: [],
                 address
             }
@@ -71,17 +72,17 @@ export default Canister({
         return Ok(user);
     }),
 
-    createCustomer: update([Principal, text, text, text, text, text, text, int64], Result(User, RoleException), (id, email, phone,
+    createCustomer: update([text, text, text, text, text, text, text, int64], Result(User, RoleException), (id, email, phone,
         role, address, vehicleType, vehiclePlate, vehicleSize) => {
 
-        if(role.toLocaleLowerCase() !== 'cliente'){
+        if(role.toLowerCase() !== 'cliente'){
             return Err({
                     RoleException: 'User is not a customer'
                 })
         }
 
         const user: User = {
-            id,
+            id: Principal.fromText(id),
             email,
             phone,
             role
@@ -94,7 +95,7 @@ export default Canister({
             size: vehicleSize
         }
 
-        if(role.toLocaleLowerCase() !== 'cliente'){
+        if(role.toLowerCase() !== 'cliente'){
             return Err({
                     RoleException: 'User is not a customer'
                 })
@@ -103,7 +104,7 @@ export default Canister({
         users.insert(user.id, user);
 
             const customer: Customer = {
-                id,
+                id: Principal.fromText(id),
                 vehicle,
                 address
             }
@@ -135,7 +136,7 @@ export default Canister({
             });
         }
 
-        if(userOpt.Some.role.toLocaleLowerCase() === 'propietario'){
+        if(userOpt.Some.role.toLowerCase() === 'propietario'){
             owners.remove(Principal.fromText(id));
         }
             else{
@@ -166,7 +167,7 @@ export default Canister({
                 role
             };
 
-            if(role.toLocaleLowerCase() === 'propietario'){
+            if(role.toLowerCase() === 'propietario'){
                 const owner = owners.get(Principal.fromText(userId));
                 if(owner.Some){
                     owners.remove(Principal.fromText(userId));
@@ -279,7 +280,7 @@ export default Canister({
         const booking = bookings.get(Principal.fromText(idBooking));
         const userFound = users.get(Principal.fromText(userId)).Some;
 
-        if(userFound?.role.toLocaleLowerCase() !== 'propietario'){
+        if(userFound?.role.toLowerCase() !== 'propietario'){
             return Err({
                 AppRuntimeError: 'User is not an owner'
             });

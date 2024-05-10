@@ -1,9 +1,5 @@
 import { useCanister, useConnect } from "@connect2ic/react";
 import React, { useEffect, useState } from "react";
-import Quotes from "../components/Quotes/Quotes";
-import Banner from "../components/Banner/Banner";
-import Banner2 from "../components/Banner/Banner2";
-import FeaturesRol from "../components/Features/FeaturesRol";
 // import LayoutNavbar from "../layouts/LayoutNavbar";
 import LayoutNavbar from "../layouts/LayoutNavbar";
 import AOS from "aos";
@@ -46,7 +42,7 @@ const RegisterOwner = () => {
         const phone = form.phone.value;
         const address = form.address.value;
 
-        const userSaved = await usuarios_backend.createOwner(principal, email, phone, address, "Propietario");
+        const userSaved = await usuarios_backend.createOwner(principal, email, phone, "Propietario", address);
         console.log(userSaved);
 
 
