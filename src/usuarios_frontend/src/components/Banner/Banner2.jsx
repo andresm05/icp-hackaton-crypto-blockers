@@ -25,7 +25,7 @@ const Banner2 = ({ togglePlay }) => {
                 molestias quia exercitationem ex inventore labore beatae cumque
                 et quaerat voluptas?
               </p>
-              <div className="flex gap-6">
+              {/* <div className="flex gap-6">
                 <button
                   data-aos="fade-up"
                   data-aos-delay="700"
@@ -43,7 +43,7 @@ const Banner2 = ({ togglePlay }) => {
                   <BiPlayCircle className="text-3xl" />
                   See Demo
                 </button>
-              </div>
+              </div> */}
             </div>
             {/* backgrond color blob */}
             <div className="h-[300px] w-[300px] bg-gradient-to-r from-primary to-secondary rounded-full absolute bottom-[-200px] left-[300px] blur-3xl opacity-50 "></div>

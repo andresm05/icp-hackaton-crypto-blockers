@@ -1,13 +1,18 @@
 import React from "react";
 import { FaCameraRetro } from "react-icons/fa";
 import { GiNotebook } from "react-icons/gi";
+import { FaCar } from "react-icons/fa";
+import { RiUserLocationLine } from "react-icons/ri";
+
+
+
 import { SlNote } from "react-icons/sl";
 import { Link } from "react-router-dom";
 const FeaturesData = [
   {
     name: "Propietario",
     icon: (
-      <FaCameraRetro className="text-5xl text-primary group-hover:text-black duration-300" />
+      <RiUserLocationLine className="text-5xl text-primary group-hover:text-black duration-300" />
     ),
     link: "#",
     description: "Tengo un espacio para alquilar",
@@ -16,7 +21,7 @@ const FeaturesData = [
   {
     name: "Parker",
     icon: (
-      <GiNotebook className="text-5xl text-primary group-hover:text-black duration-300" />
+      <FaCar className="text-5xl text-primary group-hover:text-black duration-300" />
     ),
     link: "#",
     description: "Necesito parquear",
