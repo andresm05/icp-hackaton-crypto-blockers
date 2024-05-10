@@ -5,16 +5,17 @@ import { SlNote } from "react-icons/sl";
 
 const FeaturesData = [
   {
-    name: "Captivating Videos",
+    name: "Suscripción",
     icon: (
       <FaCameraRetro className="text-5xl text-primary group-hover:text-black duration-300" />
     ),
     link: "#",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    description: "Con esta subscripción los propietario pueden listar y administrar sus espacios de estacionamiento en la aplicación.",
+    precio: "0",
     aosDelay: "300",
   },
   {
-    name: "Safe Transactions",
+    name: "Comisión",
     icon: (
       <GiNotebook className="text-5xl text-primary group-hover:text-black duration-300" />
     ),
@@ -22,15 +23,7 @@ const FeaturesData = [
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
     aosDelay: "500",
   },
-  {
-    name: "Experience Reality",
-    icon: (
-      <SlNote className="text-5xl text-primary group-hover:text-black duration-500" />
-    ),
-    link: "#",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
-    aosDelay: "700",
-  },
+
 ];
 
 const Features = () => {
@@ -45,11 +38,11 @@ const Features = () => {
             data-aos="fade-up"
             className="text-3xl font-semibold text-center sm:text-4xl mb-12"
           >
-            Why Choose Us
+              Planes de Pago
           </h1>
 
           {/* card section */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-10 mx-40">
             {FeaturesData.map((data, index) => (
               <div
                 key={index}
@@ -60,12 +53,15 @@ const Features = () => {
                 <div className="grid place-items-center"> {data.icon}</div>
                 <h1 className="text-2xl">{data.name}</h1>
                 <p>{data.description}</p>
+
+                <h1 className="text-2xl">{data.precio}</h1>
                 <a
                   href={data.link}
                   className="inline-block text-lg font-semibold py-3 text-primary group-hover:text-black duration-300"
                 >
                   Learn More
                 </a>
+              
               </div>
             ))}
           </div>

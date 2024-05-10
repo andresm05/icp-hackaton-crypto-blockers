@@ -48,9 +48,16 @@ const Navbar = () => {
               }
                     {/* <span className="fs-6 text">{principal}</span>
                     console.log(principal) */}
+    <div Class="text-xl font-semibold hover:text-primary py-2 hover:border-b-2 hover:border-secondary transition-colors duration-500">
 
                     <ConnectButton />
+
+    </div>
+    <div Class=" font-semibold hover:text-primary  hover:border-b-2 hover:border-secondary transition-colors duration-500 text-xs">
+
                     <ConnectDialog />
+
+                    </div>
               {/* Darkmode feature */}
               <DarkMode />
             </ul>
