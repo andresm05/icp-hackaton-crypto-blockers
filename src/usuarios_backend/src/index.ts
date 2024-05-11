@@ -45,7 +45,13 @@ export default Canister({
     //Create a new owner
     createOwner: update([text, text, text, text, float64, float64], Result(User, RoleException), (id, email, phone, 
         role, latitude, longitude) => {
-        console.log(role)
+
+        if(users.get(Principal.fromText(id)).Some){
+            return Err({
+                RoleException: 'User already exists'
+            })
+        }
+
         const user: User = {
             id: Principal.fromText(id),
             email,
@@ -58,6 +64,13 @@ export default Canister({
                     RoleException: 'User is not an owner'
                 })
         }
+
+        if(owners.get(Principal.fromText(email)).Some){
+            return Err({
+                RoleException: 'Owner already exists'
+            })
+        }
+
         users.insert(user.id, user);
 
             const owner: Owner = {
@@ -77,6 +90,11 @@ export default Canister({
     createCustomer: update([text, text, text, text, float64, float64, text, text, int64], Result(User, RoleException), (id, email, phone,
         role, latitude, longitude, vehicleType, vehiclePlate, vehicleSize) => {
 
+        if(users.get(Principal.fromText(id)).Some){
+            return Err({
+                RoleException: 'User already exists'
+            })
+        }
 
         if(role.toLowerCase() !== 'cliente'){
             return Err({
@@ -129,10 +147,21 @@ export default Canister({
     readUserById: query([text], Opt(User), (id) => {
         return users.get(Principal.fromText(id));
     }),
-
+    
     //Find a owner by id
     readOwnerById: query([text], Opt(Owner), (id) => {
         return owners.get(Principal.fromText(id));
+    }),
+
+    //Find user by email
+    readUserByEmail: query([text], Result(User, AplicationError),(email) => {
+        const user = users.values().find(user => user.email === email);
+        if(!user){
+            return Err({
+                AppRuntimeError: 'User not found'
+            });
+        }
+        return Ok(user);
     }),
 
     //Find a customer by id
