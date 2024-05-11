@@ -38,7 +38,7 @@ const HomePage = () => {
   useEffect(() => {
     loadingUser();
     if (principal){
-      if (customer) {
+      if (customer["vehicle_name"]) {
         setUserRegisteredUser("cliente")
       }
       else if (user["role"] == "propietario") {

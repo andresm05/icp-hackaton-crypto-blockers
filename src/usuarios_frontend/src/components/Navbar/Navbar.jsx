@@ -86,12 +86,42 @@ const Navbar = ({userRegisteredUser}) => {
                 />
               )}
             </div>
+            </div>
+            {showMenu && (
+              <nav className="absolute right-0 top-full bg-white border border-gray-200 rounded-lg mt-1">
+                <ul className="flex flex-col gap-2 p-2">
+                  <li>
+                    <Link
+                      to="/"
+                      className="text-lg font-semibold hover:text-primary transition-colors duration-500"
+                    >
+                      Inicio
+                    </Link>
+                  </li>
+                  {!userRegisteredUser && principal && (
+                    <li>
+                      <Link
+                        to="/nuevo-usuario"
+                        className="text-lg font-semibold hover:text-primary transition-colors duration-500"
+                      >
+                        Registro
+                      </Link>
+                    </li>
+                  )}
+                  <li>
+                    <ConnectButton />
+                  </li>
+                  <li>
+                    <ConnectDialog />
+                  </li>
+                </ul>
+              </nav>
+            )}
           </div>
-
+      
         </div>
               
       </div>
-    </div>
 
   );
 };

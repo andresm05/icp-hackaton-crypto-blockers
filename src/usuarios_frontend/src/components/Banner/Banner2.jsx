@@ -18,8 +18,8 @@ const Banner2 = ({ togglePlay }) => {
                 En{" "}
                 <span className="letra-color">
                 2022 </span>se impusieron, <span className="letra-color">
-                26767</span> comparendos por parqueo irregular en toda la ciudad y se inmovilizaron <span className="letra-color">
-                14361 </span> vehículos
+                26.767</span> comparendos por parqueo irregular en toda la ciudad y se inmovilizaron <span className="letra-color">
+                14.361 </span> vehículos
               </h1>
               {/* <p data-aos="fade-up" data-aos-delay="500">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab

@@ -41,7 +41,7 @@ const Features = () => {
            Programas de pago </h1>
 
           {/* card section */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-10 mx-40">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-10 lg:mx-40">
             {FeaturesData.map((data, index) => (
               <div
                 key={index}

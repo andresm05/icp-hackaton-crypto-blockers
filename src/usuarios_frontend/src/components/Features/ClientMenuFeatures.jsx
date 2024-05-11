@@ -47,7 +47,7 @@ const ClientMenuFeatures = () => {
           >
             Menú
           </h1>
-          <div className="grid grid-cols-1 lg:my-20 lg:mx-36 sm:grid-cols-2 md:grid-cols-2 gap-10 justify-center items-center">
+          <div className="grid grid-cols-1 lg:my-20 lg:mx-36 sm:grid-cols-2 md:grid-cols-2  gap-10 justify-center items-center">
             {FeaturesData.map((data, index) => (
               <Link to={data.link} key={index}>
                 <div
