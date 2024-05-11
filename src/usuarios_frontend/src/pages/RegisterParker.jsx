@@ -5,7 +5,7 @@ import LayoutNavbar from "../layouts/LayoutNavbar";
 import AOS from "aos";
 import Swal from "sweetalert2";
 
-const RegisterOwner = () => {
+const RegisterParker = () => {
 
     const { principal } = useConnect();
     const [usuarios_backend] = useCanister("usuarios_backend");
@@ -136,4 +136,4 @@ const RegisterOwner = () => {
 }
 
 
-export default RegisterOwner
+export default RegisterParker

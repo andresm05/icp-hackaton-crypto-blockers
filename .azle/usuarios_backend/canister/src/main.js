@@ -100849,7 +100849,11 @@ var src_default = Canister({
         float64,
         float64
     ], Result(User, RoleException), (id2, email, phone, role, latitude, longitude)=>{
-        console.log(role);
+        if (users.get(Principal3.fromText(id2)).Some) {
+            return Err({
+                RoleException: "User already exists"
+            });
+        }
         const user = {
             id: Principal3.fromText(id2),
             email,
@@ -100859,6 +100863,11 @@ var src_default = Canister({
         if (role.toLowerCase() !== "propietario") {
             return Err({
                 RoleException: "User is not an owner"
+            });
+        }
+        if (owners.get(Principal3.fromText(email)).Some) {
+            return Err({
+                RoleException: "Owner already exists"
             });
         }
         users.insert(user.id, user);
@@ -100883,6 +100892,11 @@ var src_default = Canister({
         text,
         int64
     ], Result(User, RoleException), (id2, email, phone, role, latitude, longitude, vehicleType, vehiclePlate, vehicleSize)=>{
+        if (users.get(Principal3.fromText(id2)).Some) {
+            return Err({
+                RoleException: "User already exists"
+            });
+        }
         if (role.toLowerCase() !== "cliente") {
             return Err({
                 RoleException: "User is not a customer"
@@ -100930,6 +100944,18 @@ var src_default = Canister({
         text
     ], Opt2(Owner), (id2)=>{
         return owners.get(Principal3.fromText(id2));
+    }),
+    //Find user by email
+    readUserByEmail: query([
+        text
+    ], Result(User, AplicationError), (email)=>{
+        const user = users.values().find((user2)=>user2.email === email);
+        if (!user) {
+            return Err({
+                AppRuntimeError: "User not found"
+            });
+        }
+        return Ok(user);
     }),
     //Find a customer by id
     readCustomerById: query([

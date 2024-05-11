@@ -8,6 +8,7 @@ service: () -> {
     readAvailableBookings: () -> (vec record {id:principal; fee_per_hour:float64; size:int64; available:bool}) query;
     readCustomerById: (text) -> (opt record {id:principal; latitude:float64; longitude:float64; vehicle:record {id:principal; name:text; size:int64; plate:text}}) query;
     readOwnerById: (text) -> (opt record {id:principal; latitude:float64; bookings:vec record {id:principal; fee_per_hour:float64; size:int64; available:bool}; longitude:float64}) query;
+    readUserByEmail: (text) -> (variant {Ok:record {id:principal; role:text; email:text; phone:text}; Err:variant {AppRuntimeError:text}}) query;
     readUserById: (text) -> (opt record {id:principal; role:text; email:text; phone:text}) query;
     readUsers: () -> (vec record {id:principal; role:text; email:text; phone:text}) query;
     updateUser: (text, text, text, text, float64, float64) -> (variant {Ok:record {id:principal; role:text; email:text; phone:text}; Err:variant {AppRuntimeError:text}});
