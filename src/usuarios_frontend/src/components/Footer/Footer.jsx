@@ -9,21 +9,21 @@ import {
 
 const FooterLinks = [
   { id: 1, title: "Home", link: "/#" },
-  {
-    id: 2,
-    title: "About",
-    link: "/#about",
-  },
-  {
-    id: 3,
-    title: "Contact",
-    link: "/#contact",
-  },
-  {
-    id: 4,
-    title: "Blog",
-    link: "/#blog",
-  },
+  // {
+  //   id: 2,
+  //   title: "About",
+  //   link: "/#about",
+  // },
+  // {
+  //   id: 3,
+  //   title: "Contact",
+  //   link: "/#contact",
+  // },
+  // {
+  //   id: 4,
+  //   title: "Blog",
+  //   link: "/#blog",
+  // },
 ];
 const Footer = () => {
   return (
@@ -34,11 +34,10 @@ const Footer = () => {
             {/* company Details */}
             <div className="py-8 px-4">
               <h1 className="sm:text-3xl text-xl font-bold sm:text-left text-justify mb-3 flex items-center gap-3">
-                Metaverse
+                ParQApp
               </h1>
               <p className="text-sm">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Repellat dolor illum a aut iste expedita.
+
               </p>
               <br />
 
@@ -46,11 +45,11 @@ const Footer = () => {
               <div>
                 <div className="flex items-center gap-3">
                   <FaLocationArrow />
-                  <p>Noida, Uttar Pradesh</p>
+                  <p>Universidad de Antioquia</p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <FaMobileAlt />
-                  <p>+91 123456789</p>
+                  
+                  
                 </div>
               </div>
 
@@ -89,7 +88,7 @@ const Footer = () => {
                     ))}
                   </ul>
                 </div>
-              </div>
+              {/* </div>
               <div>
                 <div className="py-8 px-4">
                   <h1 className="text-xl font-bold mb-3 ">Quick Links</h1>
@@ -128,7 +127,7 @@ const Footer = () => {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

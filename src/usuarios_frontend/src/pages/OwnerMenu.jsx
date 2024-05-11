@@ -15,40 +15,12 @@ import ClientMenuFeatures from '../components/Features/ClientMenuFeatures';
 import OwnerMenuFeatures from '../components/Features/OwnerMenuFeatures';
 
 const OwnerMenu = () => {
-  const { principal } = useConnect();
-  const [usuarios_backend] = useCanister("usuarios_backend");
-  const [userSaved, setUserSaved] = useState(null); // Define userSaved state variable
+  
+
   const [userRegisteredUser, setUserRegisteredUser] = useState(null); // Define userSaved state variable
 
-  
-  const userSavedfake = {
-    // rol: "propietario"
-  }
-
-  useEffect(() => {
-    loadingUser();
-    if (userSavedfake.rol == "propietario") {
-      setUserRegisteredUser("propietario")
-    }
-    else if (userSavedfake.rol == "cliente") {
-      setUserRegisteredUser("cliente")
-    } 
-    else {
-      setUserRegisteredUser(null)
-    }
 
 
-  }, []);
-
-
-  const loadingUser = async () => {
-    try {
-
-      const userSaved = await usuarios_backend.readUserById(principal);
-      setUserSaved(userSaved); // Set userSaved state variable
-    } catch (error) {
-    }
-  };
 
 
   // console.log("estos son los usuarios",userSaved); // Log userSaved state variable

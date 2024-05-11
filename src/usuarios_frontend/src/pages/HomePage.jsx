@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useContext, useState, useEffect } from 'react';
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Hero from "../components/Hero/Hero";
@@ -10,6 +10,9 @@ import Footer from "../components/Footer/Footer";
 import PopupPlayer from "../components/PopupPlayer/PopupPlayer";
 import Navbar from '../components/Navbar/Navbar';
 import { useCanister, useConnect } from "@connect2ic/react";
+import { UserContext } from "../context/UserContext";
+
+
 
 const HomePage = () => {
   const { principal } = useConnect();
@@ -17,22 +20,35 @@ const HomePage = () => {
   const [userSaved, setUserSaved] = useState(null); // Define userSaved state variable
   const [userRegisteredUser, setUserRegisteredUser] = useState(null); // Define userSaved state variable
 
-  
-  const userSavedfake = {
-    rol: "propietario"
-  }
+  const {user, setUser} = useContext(UserContext)
+  const {customer, setCustomer} = useContext(UserContext)
+    
+    // console.log("aqui está saliendo el user", user.role)
+    console.log("aqui está saliendo el user PROPI????", user["role"])
+
+    console.log("aqui está saliendo el COSTUMEEEER", customer)
+    console.log("aqui está saliendo el user", customer["role"])
+    console.log("aqui está saliendo el user", user["role"])
+
+    // console.log("aqui está saliendo el user", user.role)
+  // const user = {
+  //   // rol: "propietario"
+  // }
 
   useEffect(() => {
     loadingUser();
-    if (userSavedfake.rol == "propietario") {
-      setUserRegisteredUser("propietario")
+    if (principal){
+      if (customer) {
+        setUserRegisteredUser("cliente")
+      }
+      else if (user["role"] == "propietario") {
+        setUserRegisteredUser("propietario")
+      } 
+      else {
+        setUserRegisteredUser(null)
+      }
     }
-    else if (userSavedfake.rol == "cliente") {
-      setUserRegisteredUser("cliente")
-    } 
-    else {
-      setUserRegisteredUser(null)
-    }
+
 
 
   }, []);

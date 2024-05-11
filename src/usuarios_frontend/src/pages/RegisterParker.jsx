@@ -13,7 +13,7 @@ const RegisterParker = () => {
     const { principal } = useConnect();
     const [usuarios_backend] = useCanister("usuarios_backend");
     // const [loading, setLoading] = useState("");
-
+    const navigate = useNavigate();
     const {customer, setCustomer} = useContext(UserContext)
     
     useEffect(() => {
@@ -53,10 +53,13 @@ const RegisterParker = () => {
                 Swal.fire({
                     icon: 'success',
                     title: 'Registro exitoso',
-                    text: 'Bienvenido a ParkApp!',
+                    text: 'Bienvenido a ParQApp!',
                     footer: 'Ahora puedes acceder a nuestros servicios'         
                     })
-            }
+                .then(() => {
+                    navigate("/");
+                  })
+                }
         }catch(error){
             Swal.fire({
                 icon: 'error',
