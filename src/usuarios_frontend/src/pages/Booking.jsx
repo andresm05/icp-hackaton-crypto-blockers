@@ -28,7 +28,11 @@ const Booking = () => {
 
 
     return (
-        <><LayoutNavbar />
+        <div className="h-screen overflow-hidden ">
+            
+            <LayoutNavbar />
+            <div className="row  mt-5 h-screen overflow-hidden">
+                
             <div className="row  mt-5">
                 <div className="col-2"></div>
                 <div className="col-8">
@@ -37,11 +41,19 @@ const Booking = () => {
                         <div className="alert alert-primary">{true}</div>
                         :
                         <div></div>}
-                    <div className="card">
-                        <div className="card-header">
-                            Agregar nuevo espacio de reserva
-                        </div>
-                        <div className="card-body">
+
+                        
+<div  data-aos="fade-up"
+                  data-aos-delay="200" className="card w-[400px] h-[400px]  mt-10 bg-white rounded-lg bg-opacity-10 shadow-xl shadow-violet-800">
+                    <div className="p-5">
+
+                         <p className="text-2xl">
+                        Agrega <span className="font-bold">Nuevo Espacio de reserva</span>
+            </p> 
+
+                    </div>
+                        
+                        <div className="card-body mt10 mx-5">
 
 
                             <form className="max-w-sm mx-auto" onSubmit={saveUser}>
@@ -58,16 +70,16 @@ const Booking = () => {
                                     <label htmlFor="fee" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{`Tarifa por hora (COP)`}</label>
                                     <input type="number" min={0} name="fee" id="password" className="htmlForm-input" required />
                                 </div>
-                                <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                                <button type="submit" className="mt-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
                             </form>
 
                         </div>
                     </div>
                 </div>
                 <div className="col-2"></div>
-
+                </div>
             </div>
-        </>
+        </div>
 
 
 

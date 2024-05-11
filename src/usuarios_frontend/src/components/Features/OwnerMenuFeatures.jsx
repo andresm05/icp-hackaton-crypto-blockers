@@ -9,11 +9,11 @@ import { MdCancel } from "react-icons/md";
 
 const FeaturesData = [
   {
-    name: "Proximamente",
-    icon: <MdCancel className="text-5xl  text-primary group-hover:text-black duration-300" />,
-    link: "",
-    description: "Esta opción estará habilitada proximamente",
-    aosDelay: "500",
+    name: "Crear una reserva para tu espacio",
+    icon: <LuParkingCircle  className="text-5xl text-primary group-hover:text-black duration-300" />,
+    link: "/booking",
+    description: "Tengo un espacio para alquilar",
+    aosDelay: "300",
   },
   {
     name: "Proximamente",
@@ -24,7 +24,7 @@ const FeaturesData = [
   },
 ];
 
-const ClientMenuFeatures = () => {
+const OwnerMenuFeatures = () => {
   const [linkDestino, setLinkDestino] = useState("");
 
   // useEffect(() => {
@@ -71,4 +71,4 @@ const ClientMenuFeatures = () => {
   );
 };
 
-export default ClientMenuFeatures;
+export default OwnerMenuFeatures;

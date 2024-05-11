@@ -72,13 +72,13 @@ const Hero = ({ togglePlay , userRegisteredUser}) => {
 
 
                 {userRegisteredUser === "propietario"? (
-             <Link to="/client-menu" data-aos="fade-up" data-aos-delay="500" className="primary-btn">
+             <Link to="/owner-menu" data-aos="fade-up" data-aos-delay="500" className="primary-btn">
              Ingresa a tu plataforma
            </Link>): (<></>)}
 
 
                 {userRegisteredUser === "cliente"? (
-                <Link to="/owner-menu" data-aos="fade-up" data-aos-delay="500" className="primary-btn">
+                <Link to="/client-menu" data-aos="fade-up" data-aos-delay="500" className="primary-btn">
                 Ingresa a tu plataforma
               </Link>): (<></>)}
                 {/* <button
