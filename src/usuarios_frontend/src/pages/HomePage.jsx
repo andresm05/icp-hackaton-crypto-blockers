@@ -19,7 +19,7 @@ const HomePage = () => {
 
   
   const userSavedfake = {
-    // rol: "cliente"
+    // rol: "propietario"
   }
 
   useEffect(() => {

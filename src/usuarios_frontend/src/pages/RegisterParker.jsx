@@ -47,6 +47,9 @@ const RegisterParker = () => {
                     title: 'Registro exitoso',
                     text: 'Bienvenido a ParkApp!',
                     footer: 'Ahora puedes acceder a nuestros servicios'
+                    
+                    }). then((salida)=>{
+                        console.log(salida)
                     })
             }
 

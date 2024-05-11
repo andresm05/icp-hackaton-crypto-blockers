@@ -5,6 +5,9 @@ import LayoutNavbar from "../layouts/LayoutNavbar";
 import AOS from "aos";
 import Swal from "sweetalert2";
 
+
+
+
 const RegisterOwner = () => {
 
     const { principal } = useConnect();
@@ -48,7 +51,9 @@ const RegisterOwner = () => {
                 title: 'Registro exitoso',
                 text: 'Bienvenido a ParkApp!',
                 footer: 'Ahora puedes acceder a nuestros servicios'
-                })
+                }).then((value) => {
+                    ;
+                  })
         }catch(error){
             Swal.fire({
                 icon: 'error',
