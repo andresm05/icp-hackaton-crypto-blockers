@@ -2,7 +2,7 @@ import React from "react";
 import HeroPng from "../../assets/hero.png";
 import { BiPlayCircle } from "react-icons/bi";
 
-const Hero = ({ togglePlay }) => {
+const Hero = ({ togglePlay , userRegisteredUser}) => {
   return (
     <>
       <div className="py-12 sm:py-0 dark:bg-black dark:text-white duration-300 overflow-hidden">
@@ -10,23 +10,87 @@ const Hero = ({ togglePlay }) => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 place-items-center relative z-10">
             {/* hero text section */}
             <div className="order-2 sm:order-1 space-y-5 lg:pr-20 relative z-30">
-              <h1 data-aos="fade-up" data className="text-6xl font-semibold font-sans">
-                ParQApp{" "}
-                {/* <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
-                  GAMES WITH OUR PLATFORM
-                </span> */}
-              </h1>
+              
+              
+                {!userRegisteredUser? (
+            <h1 data-aos="fade-up" data 
+            className="text-6xl font-semibold font-sans">
+              ParQApp{" "}
+    
+            </h1>
+              ): (<></>)}
+     
+              {userRegisteredUser === "propietario"? (
+                <h1 data-aos="fade-up" data 
+                className="text-6xl font-semibold font-sans">
+                  Sacale ganancia a ese parqueadero que tienes sin usar y olvidate de dolores de cabeza a la hora de parquear{" "}
+ 
+                </h1>
+                ): (<></>)}
+
+              {userRegisteredUser === "cliente"? (
+                <h1 data-aos="fade-up" data 
+                className="text-6xl font-semibold font-sans">
+                  Bienvenido Cliente{" "}
+
+                </h1>
+                ): (<></>)}
+
+              {!userRegisteredUser? (
+   <p data-aos="fade-up" className="text-2xl" data-aos-delay="300">
+   Sácale ganancia a ese parqueadero que tienes sin usar y olvídate de dolores de cabeza a la hora de parquear.
+   </p>
+              ): (<></>)}
+
+              {userRegisteredUser === "propietario"? (
+
               <p data-aos="fade-up" className="text-2xl" data-aos-delay="300">
-              Sácale ganancia a ese parqueadero que tienes sin usar y olvídate de dolores de cabeza a la hora de parkear.
+            Ahora eres parte de nuestra plataforma, aprovecha ese parqueadero libre que tu tienes!
               </p>
+                ): (<></>)}
+
+
+              {userRegisteredUser === "cliente"? (
+
+              <p data-aos="fade-up" className="text-2xl" data-aos-delay="300">
+            Bienvenido cliente, entra y encuentra tu lugar de parqueo perfecto.
+              </p>
+                ): (<></>)}
+
+
               <div className="flex gap-6">
+
+              {!userRegisteredUser? (
                 <button
                   data-aos="fade-up"
                   data-aos-delay="500"
                   className="primary-btn"
                 >
+
                   Unete ya!
-                </button>
+                </button>): (<></>)}
+
+
+                {userRegisteredUser === "propietario"? (
+                <button
+                  data-aos="fade-up"
+                  data-aos-delay="500"
+                  className="primary-btn"
+                >
+
+                  Ingresa a tu plataforma
+                </button>): (<></>)}
+
+
+                {userRegisteredUser === "cliente"? (
+                <button
+                  data-aos="fade-up"
+                  data-aos-delay="500"
+                  className="primary-btn"
+                >
+
+                  Ingresa a tu plataforma
+                </button>): (<></>)}
                 {/* <button
                   data-aos="fade-up"
                   data-aos-delay="700"
