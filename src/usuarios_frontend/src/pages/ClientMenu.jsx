@@ -10,8 +10,10 @@ import Footer from "../components/Footer/Footer";
 import PopupPlayer from "../components/PopupPlayer/PopupPlayer";
 import Navbar from '../components/Navbar/Navbar';
 import { useCanister, useConnect } from "@connect2ic/react";
+// import ClientMenu from '../components/Features/ClientMenu';
+import ClientMenuFeatures from '../components/Features/ClientMenuFeatures';
 
-const HomePage = () => {
+const ClientMenu = () => {
   const { principal } = useConnect();
   const [usuarios_backend] = useCanister("usuarios_backend");
   const [userSaved, setUserSaved] = useState(null); // Define userSaved state variable
@@ -19,7 +21,7 @@ const HomePage = () => {
 
   
   const userSavedfake = {
-    rol: "propietario"
+    // rol: "propietario"
   }
 
   useEffect(() => {
@@ -69,33 +71,15 @@ const HomePage = () => {
 
   return (
    
-      userRegisteredUser == "propietario" ? (
+    
         <div>
           <Navbar userRegistered = {userRegisteredUser} />
-          <Hero togglePlay={togglePlay} userRegisteredUser = {userRegisteredUser} />
-          <Footer />
-        </div>
-      ) : userRegisteredUser == "cliente" ? (
-        <div>
-          <Navbar userRegistered = {userRegisteredUser} />
-          <Hero togglePlay={togglePlay} userRegisteredUser = {userRegisteredUser}/>
-          <Footer />
-        </div>
-      ) : (
-        <div>
+          <ClientMenuFeatures/>
 
-          <Navbar  userRegistered = {userRegisteredUser}/>
-          <Hero togglePlay={togglePlay} userRegisteredUser = {userRegisteredUser} />
-          <Quotes />
-          <Banner togglePlay={togglePlay} />
-          <Banner2 togglePlay={togglePlay} />
-          <Features />
-          <Footer />
-          <PopupPlayer isPlay={isPlay} togglePlay={togglePlay} />
-        </div>
-      )
+          </div>
+      
  
   );
 }
 
-export default HomePage;
+export default ClientMenu;
