@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 
 import {BrowserRouter, Route, Link, Routes} from 'react-router-dom';
-import { Connect2ICProvider } from "@connect2ic/react"
+import { ConnectButton, ConnectDialog, Connect2ICProvider } from "@connect2ic/react"
 import * as usuarios_backend from "declarations/usuarios_backend";
 import { createClient } from "@connect2ic/core"
 import { InternetIdentity } from "@connect2ic/core/providers/internet-identity"
+import {  useConnect } from "@connect2ic/react";
 import UserCreate from "./pages/UserCreate";
 import Users from "./pages/Users";
 import HomePage from "./pages/HomePage";
 import RegisterOwner from "./pages/RegisterOwner";
 import Booking from "./pages/Booking";
-
+import RegisterParker from "./pages/RegisterParker";
 import "aos/dist/aos.css";
 
 const App = () => {
@@ -28,7 +29,9 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/usuarios" element={<Users />} />
           <Route path="/nuevo-usuario" element={<UserCreate />} />
+          {/* <Route path="/nuevo-usuario" element={<UserCreate />} /> */}
           <Route path="/Register-owner" element={<RegisterOwner />} />
+          <Route path="/Register-parker" element={<RegisterParker />} />
           <Route path="/Booking" element={<Booking />} />
           {/* Ruta para el componente Login */}
           {/* <Route path="/login" element={<Login />} /> */}
