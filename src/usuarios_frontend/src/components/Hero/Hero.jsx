@@ -1,7 +1,7 @@
 import React from "react";
 import HeroPng from "../../assets/hero.png";
 import { BiPlayCircle } from "react-icons/bi";
-
+import { Link } from "react-router-dom";
 const Hero = ({ togglePlay , userRegisteredUser}) => {
   return (
     <>
@@ -72,25 +72,15 @@ const Hero = ({ togglePlay , userRegisteredUser}) => {
 
 
                 {userRegisteredUser === "propietario"? (
-                <button
-                  data-aos="fade-up"
-                  data-aos-delay="500"
-                  className="primary-btn"
-                >
-
-                  Ingresa a tu plataforma
-                </button>): (<></>)}
+             <Link to="/client-menu" data-aos="fade-up" data-aos-delay="500" className="primary-btn">
+             Ingresa a tu plataforma
+           </Link>): (<></>)}
 
 
                 {userRegisteredUser === "cliente"? (
-                <button
-                  data-aos="fade-up"
-                  data-aos-delay="500"
-                  className="primary-btn"
-                >
-
-                  Ingresa a tu plataforma
-                </button>): (<></>)}
+                <Link to="/owner-menu" data-aos="fade-up" data-aos-delay="500" className="primary-btn">
+                Ingresa a tu plataforma
+              </Link>): (<></>)}
                 {/* <button
                   data-aos="fade-up"
                   data-aos-delay="700"

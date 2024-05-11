@@ -71,16 +71,13 @@ const UserCreate = () => {
 
     return (
         <><LayoutNavbar  />
-        {console.log("este es el owner, será?"  , esOwner)}
+        
         {/* <Quotes />
       <Banner togglePlay={togglePlay} />
       <Banner2 togglePlay={togglePlay} /> */}
       <FeaturesRol esOwner = {esOwner} setEsOwner = {setIsOwner} />
       
         </>
-
-
-        
     )
 }
 

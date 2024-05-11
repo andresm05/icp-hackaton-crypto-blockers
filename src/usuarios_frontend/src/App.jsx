@@ -12,6 +12,10 @@ import HomePage from "./pages/HomePage";
 import RegisterOwner from "./pages/RegisterOwner";
 import Booking from "./pages/Booking";
 import RegisterParker from "./pages/RegisterParker";
+import ClientMenu from "./pages/ClientMenu";
+import OwnerMenu from "./pages/OwnerMenu";
+
+
 import "aos/dist/aos.css";
 
 const App = () => {
@@ -33,6 +37,8 @@ const App = () => {
           <Route path="/Register-owner" element={<RegisterOwner />} />
           <Route path="/Register-parker" element={<RegisterParker />} />
           <Route path="/Booking" element={<Booking />} />
+          <Route path="/client-menu" element={<ClientMenu />} />
+          <Route path="/owner-menu" element={<OwnerMenu />} />
           {/* Ruta para el componente Login */}
           {/* <Route path="/login" element={<Login />} /> */}
         </Routes>
