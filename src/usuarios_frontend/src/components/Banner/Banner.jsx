@@ -17,20 +17,17 @@ const Banner = ({ togglePlay }) => {
               <h1
                 data-aos="fade-up"
                 data-aos-delay="300"
-                className="text-4xl font-semibold"
+                className="text-3xl font-semibold"
               >
-                ParQApp{" "}
+                El mal parqueo es uno de los factores que contribuye al tráfico en Medellín, generando aproximadamente el{" "}
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
-                  Movies WITH OUR PLATFORM
-                </span>
+                40%                </span>de las congestiones en las vías. 
               </h1>
-              <p data-aos="fade-up" data-aos-delay="500">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab
-                molestias quia exercitationem ex inventore labore beatae cumque
-                et quaerat voluptas?
-              </p>
+              {/* <p data-aos="fade-up" data-aos-delay="500">
+              El mal parqueo es uno de los factores que contribuye al tráfico en Medellín, generando aproximadamente el <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary text-xl"> 40% </span> de las congestiones en las vías. 
+              </p> */}
               <div className="flex gap-6">
-                <button
+                {/* <button
                   data-aos="fade-up"
                   data-aos-delay="700"
                   className="primary-btn"
@@ -46,7 +43,7 @@ const Banner = ({ togglePlay }) => {
                   {" "}
                   <BiPlayCircle className="text-3xl" />
                   See Demo
-                </button>
+                </button> */}
               </div>
             </div>
             {/* backgrond color blob */}

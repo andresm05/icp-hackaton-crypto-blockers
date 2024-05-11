@@ -18,11 +18,15 @@ import Login from "../../utils/Login";
 
 // principal
 
-const Navbar = () => {
+const Navbar = ({userRegisteredUser}) => {
 
-
+  
   const {principal} = useConnect();
+
+  console.log("este es el principal", principal)
+
   const [showMenu, setShowMenu] = React.useState(false);
+
   const toggleMenu = () => setShowMenu(!showMenu);
   return (
     // <BrowserRouter>
@@ -43,7 +47,10 @@ const Navbar = () => {
             <ul className="flex items-center gap-8">
 
               <Link to='/' className="text-xl font-semibold hover:text-primary py-2 hover:border-b-2 hover:border-secondary transition-colors duration-500">Inicio</Link>
-              {principal? (
+
+              {console.log("ESTE ESTE HP", userRegisteredUser)}
+              {console.log("ESsasadsdsd", principal)}
+              {!userRegisteredUser && principal? (
                     <Link to='/nuevo-usuario'className="text-xl font-semibold hover:text-primary py-2 hover:border-b-2 hover:border-secondary transition-colors duration-500" >Registro</Link>) : <></>
               }
                     {/* <span className="fs-6 text">{principal}</span>
@@ -64,6 +71,7 @@ const Navbar = () => {
           </nav>
 
           {/* Mobile View Sidebar */}
+
           <div className="md:hidden block">
             <div className="flex items-center gap-4">
               <DarkMode />

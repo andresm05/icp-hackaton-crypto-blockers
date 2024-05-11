@@ -38,8 +38,7 @@ const Features = () => {
             data-aos="fade-up"
             className="text-3xl font-semibold text-center sm:text-4xl mb-12"
           >
-              Planes de Pago
-          </h1>
+           Programas de pago </h1>
 
           {/* card section */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-10 mx-40">
@@ -54,12 +53,12 @@ const Features = () => {
                 <h1 className="text-2xl">{data.name}</h1>
                 <p>{data.description}</p>
 
-                <h1 className="text-2xl">{data.precio}</h1>
+                {/* <h1 className="text-2xl">{data.precio}</h1> */}
                 <a
                   href={data.link}
                   className="inline-block text-lg font-semibold py-3 text-primary group-hover:text-black duration-300"
                 >
-                  Learn More
+                  Conoce Más
                 </a>
               
               </div>

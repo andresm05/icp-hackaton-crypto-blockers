@@ -7,11 +7,9 @@ import Swal from "sweetalert2";
 
 const RegisterOwner = () => {
 
-
-
-
     const { principal } = useConnect();
     const [usuarios_backend] = useCanister("usuarios_backend");
+    
     // const [loading, setLoading] = useState("");
 
 
@@ -127,6 +125,9 @@ const RegisterOwner = () => {
                                     <input type="number" name="phone" id="password" class="form-input" required />
                                 </div>
                                 <button type="submit" className="mx-5 form-send-button mt-4">Submit</button>
+
+
+
                             </form>
 
                         </div>
