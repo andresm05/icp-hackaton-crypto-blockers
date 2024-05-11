@@ -12,6 +12,10 @@ import HomePage from "./pages/HomePage";
 import RegisterOwner from "./pages/RegisterOwner";
 import Booking from "./pages/Booking";
 import RegisterParker from "./pages/RegisterParker";
+import ClientMenu from "./pages/ClientMenu";
+import OwnerMenu from "./pages/OwnerMenu";
+
+
 import "aos/dist/aos.css";
 import { UserProvider } from "./context/UserContext";
 

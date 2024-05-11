@@ -6,6 +6,7 @@ import AOS from "aos";
 import Swal from "sweetalert2";
 import { UserContext } from "../context/UserContext";
 
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -15,6 +16,7 @@ const RegisterOwner = () => {
     const [usuarios_backend] = useCanister("usuarios_backend");
     const {user, setUser} = useContext(UserContext)
     
+    const navigate = useNavigate();
     // const [loading, setLoading] = useState("");
 
     useEffect(() => {
@@ -118,7 +120,7 @@ const RegisterOwner = () => {
                         <div></div>}
                     <div className="w-full h-screen flex justify-center ">
                     <div  data-aos="fade-up"
-                  data-aos-delay="200" className="card w-[400px] h-[450px]  mt-10 bg-white rounded-lg bg-opacity-10 shadow-xl shadow-violet-800">
+                  data-aos-delay="200" className="card w-[400px] h-[400px]  mt-10 bg-white rounded-lg bg-opacity-10 shadow-xl shadow-violet-800">
                         <div className="card-header justify-center text-center mb-10 mt-5 ">
                         <p className="text-2xl">
                         Registro <span className="font-bold">Propietario</span>

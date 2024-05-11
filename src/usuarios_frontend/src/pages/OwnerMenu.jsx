@@ -11,7 +11,7 @@ import PopupPlayer from "../components/PopupPlayer/PopupPlayer";
 import Navbar from '../components/Navbar/Navbar';
 import { useCanister, useConnect } from "@connect2ic/react";
 
-const HomePage = () => {
+const OwnerMenu = () => {
   const { principal } = useConnect();
   const [usuarios_backend] = useCanister("usuarios_backend");
   const [userSaved, setUserSaved] = useState(null); // Define userSaved state variable
@@ -19,7 +19,7 @@ const HomePage = () => {
 
   
   const userSavedfake = {
-    rol: "propietario"
+    // rol: "propietario"
   }
 
   useEffect(() => {
@@ -98,4 +98,4 @@ const HomePage = () => {
   );
 }
 
-export default HomePage;
+export default OwnerMenu;
