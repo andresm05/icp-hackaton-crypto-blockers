@@ -42,7 +42,7 @@ const Booking = () => {
                         :
                         <div></div>}
 
-                        
+<div className="flex justify-center  h-screen">
 <div  data-aos="fade-up"
                   data-aos-delay="200" className="card w-[400px] h-[400px]  mt-10 bg-white rounded-lg bg-opacity-10 shadow-xl shadow-violet-800">
                     <div className="p-5">
@@ -77,6 +77,7 @@ const Booking = () => {
                     </div>
                 </div>
                 <div className="col-2"></div>
+                </div>
                 </div>
             </div>
         </div>

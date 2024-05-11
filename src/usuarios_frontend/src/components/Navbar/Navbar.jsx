@@ -23,7 +23,6 @@ const Navbar = ({userRegisteredUser}) => {
   
   const {principal} = useConnect();
 
-  console.log("este es el principal", principal)
 
   const [showMenu, setShowMenu] = React.useState(false);
 
@@ -48,13 +47,11 @@ const Navbar = ({userRegisteredUser}) => {
 
               <Link to='/' className="text-xl font-semibold hover:text-primary py-2 hover:border-b-2 hover:border-secondary transition-colors duration-500">Inicio</Link>
 
-              {console.log("ESTE ESTE HP", userRegisteredUser)}
-              {console.log("ESsasadsdsd", principal)}
               {!userRegisteredUser && principal? (
                     <Link to='/nuevo-usuario'className="text-xl font-semibold hover:text-primary py-2 hover:border-b-2 hover:border-secondary transition-colors duration-500" >Registro</Link>) : <></>
               }
                     {/* <span className="fs-6 text">{principal}</span>
-                    console.log(principal) */}
+                    .log(principal) */}
     <div Class="text-xl font-semibold hover:text-primary py-2 hover:border-b-2 hover:border-secondary transition-colors duration-500">
 
                     <ConnectButton />

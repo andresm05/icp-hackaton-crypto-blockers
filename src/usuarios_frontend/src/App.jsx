@@ -37,7 +37,12 @@ const App = () => {
               {/* <Route path="/nuevo-usuario" element={<UserCreate />} /> */}
               <Route path="/Register-owner" element={<RegisterOwner />} />
               <Route path="/Register-parker" element={<RegisterParker />} />
+              <Route path="/owner-menu" element={<OwnerMenu />} />
+              <Route path="/client-menu" element={<ClientMenu />} />
               <Route path="/Booking" element={<Booking />} />
+
+
+
               {/* Ruta para el componente Login */}
               {/* <Route path="/login" element={<Login />} /> */}
             </Routes>

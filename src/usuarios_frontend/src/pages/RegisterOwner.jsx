@@ -58,10 +58,10 @@ const RegisterOwner = () => {
             Swal.fire({
                 icon: 'success',
                 title: 'Registro exitoso',
-                text: 'Bienvenido a ParkApp!',
+                text: 'Bienvenido a ParQApp!',
                 footer: 'Ahora puedes acceder a nuestros servicios'
-                }).then((value) => {
-                    ;
+                }).then(() => {
+                    navigate("/");
                   })
                 }
         }catch(error){
