@@ -93,7 +93,7 @@ const Navbar = ({userRegisteredUser}) => {
                   <li>
                     <Link
                       to="/"
-                      className="text-lg font-semibold hover:text-primary transition-colors duration-500"
+                      className="text-lg text-black font-semibold hover:text-primary transition-colors duration-500"
                     >
                       Inicio
                     </Link>
@@ -102,13 +102,13 @@ const Navbar = ({userRegisteredUser}) => {
                     <li>
                       <Link
                         to="/nuevo-usuario"
-                        className="text-lg font-semibold hover:text-primary transition-colors duration-500"
+                        className="text-lg text-black font-semibold hover:text-primary transition-colors duration-500"
                       >
                         Registro
                       </Link>
                     </li>
                   )}
-                  <li>
+                  <li className="text-black">
                     <ConnectButton />
                   </li>
                   <li>
