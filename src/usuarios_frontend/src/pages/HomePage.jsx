@@ -16,6 +16,8 @@ const HomePage = () => {
   const [usuarios_backend] = useCanister("usuarios_backend");
   const [userSaved, setUserSaved] = useState(null); // Define userSaved state variable
   const [userRegisteredUser, setUserRegisteredUser] = useState(null); // Define userSaved state variable
+
+  
   const userSavedfake = {
     // rol: "propietario"
   }

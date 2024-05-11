@@ -23,7 +23,7 @@ const Hero = ({ togglePlay , userRegisteredUser}) => {
               {userRegisteredUser === "propietario"? (
                 <h1 data-aos="fade-up" data 
                 className="text-6xl font-semibold font-sans">
-                  Sacale ganancia a ese parqueadero que tienes sin usar y olvidate de dolores de cabeza a la hora de parquear{" "}
+               Bienvenido Propietario {" "}
  
                 </h1>
                 ): (<></>)}
