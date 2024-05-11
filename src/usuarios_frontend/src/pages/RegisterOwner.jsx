@@ -1,9 +1,10 @@
 import { useCanister, useConnect } from "@connect2ic/react";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // import LayoutNavbar from "../layouts/LayoutNavbar";
 import LayoutNavbar from "../layouts/LayoutNavbar";
 import AOS from "aos";
 import Swal from "sweetalert2";
+import { UserContext } from "../context/UserContext";
 
 
 
@@ -12,15 +13,9 @@ const RegisterOwner = () => {
 
     const { principal } = useConnect();
     const [usuarios_backend] = useCanister("usuarios_backend");
+    const {user, setUser} = useContext(UserContext)
     
     // const [loading, setLoading] = useState("");
-
-
-    const [isPlay, setIsPlay] = useState(false);
-
-    const togglePlay = () => {
-        setIsPlay(!isPlay);
-    };
 
     useEffect(() => {
         AOS.init({
@@ -33,10 +28,12 @@ const RegisterOwner = () => {
     }, []);
 
 
+
     useEffect(() => {
         console.log("principal", principal);
     }, [principal]);
-  
+
+
     const saveUser = async (e) => {
         e.preventDefault();
         const form = e.target;
@@ -44,8 +41,18 @@ const RegisterOwner = () => {
         const phone = form.phone.value;
         const latitude = Math.random() * (6.37-6.15) + 6.37
         const longitude = Math.random() * (-75.42+75.65) - 75.65
+        setUser({
+            id: principal,
+            role: 'propietario',
+            email: email,
+            phone: phone,
+            latitude: latitude,
+            longitude: longitude
+        })
+        console.log(user)
         try{
-            const userSaved = await usuarios_backend.createOwner(principal, email, phone, "Propietario", latitude,longitude);
+            const userSaved = await usuarios_backend.createOwner(principal, email, phone, 'Propietario', latitude,longitude);
+            if(userSaved){
             Swal.fire({
                 icon: 'success',
                 title: 'Registro exitoso',
@@ -54,6 +61,7 @@ const RegisterOwner = () => {
                 }).then((value) => {
                     ;
                   })
+                }
         }catch(error){
             Swal.fire({
                 icon: 'error',

@@ -1,9 +1,10 @@
 import { useCanister, useConnect } from "@connect2ic/react";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // import LayoutNavbar from "../layouts/LayoutNavbar";
 import LayoutNavbar from "../layouts/LayoutNavbar";
 import AOS from "aos";
 import Swal from "sweetalert2";
+import { UserContext } from "../context/UserContext";
 
 const RegisterParker = () => {
 
@@ -11,13 +12,8 @@ const RegisterParker = () => {
     const [usuarios_backend] = useCanister("usuarios_backend");
     // const [loading, setLoading] = useState("");
 
-
-    const [isPlay, setIsPlay] = useState(false);
-
-    const togglePlay = () => {
-        setIsPlay(!isPlay);
-    };
-
+    const {customer, setCustomer} = useContext(UserContext)
+    
     useEffect(() => {
         AOS.init({
             offset: 100,
@@ -39,6 +35,16 @@ const RegisterParker = () => {
         const longitude = Math.random() * (-75.42 + 75.65) - 75.65
 
         const vehicleType = form.vehicleType.value;
+
+        setCustomer({
+            id: principal,
+            plate: vehiclePlate,
+            size: vehicleSize,
+            vehicle_name: vehicleType,
+            latitude: latitude,
+            longitude: longitude,
+        })
+        console.log(customer)
         try{
             const userSaved = await usuarios_backend.createCustomer(principal, email, phone, "Cliente", latitude, longitude, vehicleType, vehiclePlate, vehicleSize);
             if (userSaved){

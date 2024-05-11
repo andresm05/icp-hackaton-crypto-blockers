@@ -100781,7 +100781,7 @@ var User = Record2({
     id: Principal3,
     email: text,
     phone: text,
-    role: text
+    music: text
 });
 // src/usuarios_backend/src/exceptions/AppException.ts
 var AplicationError = Variant2({
@@ -100848,7 +100848,7 @@ var src_default = Canister({
         text,
         float64,
         float64
-    ], Result(User, RoleException), (id2, email, phone, role, latitude, longitude)=>{
+    ], Result(User, RoleException), (id2, email, phone, music, latitude, longitude)=>{
         if (users.get(Principal3.fromText(id2)).Some) {
             return Err({
                 RoleException: "User already exists"
@@ -100858,9 +100858,9 @@ var src_default = Canister({
             id: Principal3.fromText(id2),
             email,
             phone,
-            role
+            music
         };
-        if (role.toLowerCase() !== "propietario") {
+        if (music.toLowerCase() !== "propietario") {
             return Err({
                 RoleException: "User is not an owner"
             });
@@ -100891,13 +100891,13 @@ var src_default = Canister({
         text,
         text,
         int64
-    ], Result(User, RoleException), (id2, email, phone, role, latitude, longitude, vehicleType, vehiclePlate, vehicleSize)=>{
+    ], Result(User, RoleException), (id2, email, phone, music, latitude, longitude, vehicleType, vehiclePlate, vehicleSize)=>{
         if (users.get(Principal3.fromText(id2)).Some) {
             return Err({
                 RoleException: "User already exists"
             });
         }
-        if (role.toLowerCase() !== "cliente") {
+        if (music.toLowerCase() !== "cliente") {
             return Err({
                 RoleException: "User is not a customer"
             });
@@ -100906,7 +100906,7 @@ var src_default = Canister({
             id: Principal3.fromText(id2),
             email,
             phone,
-            role
+            music
         };
         const vehicle = {
             id: generateId(),
@@ -100914,7 +100914,7 @@ var src_default = Canister({
             plate: vehiclePlate,
             size: vehicleSize
         };
-        if (role.toLowerCase() !== "cliente") {
+        if (music.toLowerCase() !== "cliente") {
             return Err({
                 RoleException: "User is not a customer"
             });
@@ -100973,7 +100973,7 @@ var src_default = Canister({
                 AppRuntimeError: id2
             });
         }
-        if (userOpt.Some.role.toLowerCase() === "propietario") {
+        if (userOpt.Some.music.toLowerCase() === "propietario") {
             owners.remove(Principal3.fromText(id2));
         } else {
             customers.remove(Principal3.fromText(id2));
@@ -100990,7 +100990,7 @@ var src_default = Canister({
         text,
         float64,
         float64
-    ], Result(User, AplicationError), (userId, email, phone, role, latitude, longitude)=>{
+    ], Result(User, AplicationError), (userId, email, phone, music, latitude, longitude)=>{
         const userOpt = users.get(Principal3.fromText(userId));
         if ("None" in userOpt) {
             return Err({
@@ -101001,9 +101001,9 @@ var src_default = Canister({
             id: Principal3.fromText(userId),
             email,
             phone,
-            role
+            music
         };
-        if (role.toLowerCase() === "propietario") {
+        if (music.toLowerCase() === "propietario") {
             const owner = owners.get(Principal3.fromText(userId));
             if (owner.Some) {
                 owners.remove(Principal3.fromText(userId));
@@ -101114,7 +101114,7 @@ var src_default = Canister({
     ], Result(Booking, AplicationError), (idBooking, userId, available, fee_per_hour)=>{
         const booking = bookings.get(Principal3.fromText(idBooking));
         const userFound = users.get(Principal3.fromText(userId)).Some;
-        if ((userFound == null ? void 0 : userFound.role.toLowerCase()) !== "propietario") {
+        if ((userFound == null ? void 0 : userFound.music.toLowerCase()) !== "propietario") {
             return Err({
                 AppRuntimeError: "User is not an owner"
             });

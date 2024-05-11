@@ -44,7 +44,7 @@ let trackings = StableBTreeMap<Principal, Tracking>(0);
 export default Canister({
     //Create a new owner
     createOwner: update([text, text, text, text, float64, float64], Result(User, RoleException), (id, email, phone, 
-        role, latitude, longitude) => {
+        music, latitude, longitude) => {
 
         if(users.get(Principal.fromText(id)).Some){
             return Err({
@@ -56,10 +56,10 @@ export default Canister({
             id: Principal.fromText(id),
             email,
             phone,
-            role
+            music: music
         };
 
-        if(role.toLowerCase() !== 'propietario'){
+        if(music.toLowerCase() !== 'propietario'){
             return Err({
                     RoleException: 'User is not an owner'
                 })
@@ -88,7 +88,7 @@ export default Canister({
 
     //create a new customer
     createCustomer: update([text, text, text, text, float64, float64, text, text, int64], Result(User, RoleException), (id, email, phone,
-        role, latitude, longitude, vehicleType, vehiclePlate, vehicleSize) => {
+        music, latitude, longitude, vehicleType, vehiclePlate, vehicleSize) => {
 
         if(users.get(Principal.fromText(id)).Some){
             return Err({
@@ -96,7 +96,7 @@ export default Canister({
             })
         }
 
-        if(role.toLowerCase() !== 'cliente'){
+        if(music.toLowerCase() !== 'cliente'){
             return Err({
                     RoleException: 'User is not a customer'
                 })
@@ -106,7 +106,7 @@ export default Canister({
             id: Principal.fromText(id),
             email,
             phone,
-            role
+            music
         };
 
         const vehicle: Vehicle = {
@@ -116,7 +116,7 @@ export default Canister({
             size: vehicleSize
         }
 
-        if(role.toLowerCase() !== 'cliente'){
+        if(music.toLowerCase() !== 'cliente'){
             return Err({
                     RoleException: 'User is not a customer'
                 })
@@ -179,7 +179,7 @@ export default Canister({
             });
         }
 
-        if(userOpt.Some.role.toLowerCase() === 'propietario'){
+        if(userOpt.Some.music.toLowerCase() === 'propietario'){
             owners.remove(Principal.fromText(id));
         }
             else{
@@ -195,7 +195,7 @@ export default Canister({
     updateUser: update(
         [text, text, text, text, float64, float64],
         Result(User, AplicationError),
-        (userId, email, phone, role, latitude, longitude) => {
+        (userId, email, phone, music, latitude, longitude) => {
             const userOpt = users.get(Principal.fromText(userId));
 
             if ('None' in userOpt) {
@@ -207,10 +207,10 @@ export default Canister({
                 id:Principal.fromText(userId),
                 email,
                 phone,
-                role
+                music
             };
 
-            if(role.toLowerCase() === 'propietario'){
+            if(music.toLowerCase() === 'propietario'){
                 const owner = owners.get(Principal.fromText(userId));
                 if(owner.Some){
                     owners.remove(Principal.fromText(userId));
@@ -325,7 +325,7 @@ export default Canister({
         const booking = bookings.get(Principal.fromText(idBooking));
         const userFound = users.get(Principal.fromText(userId)).Some;
 
-        if(userFound?.role.toLowerCase() !== 'propietario'){
+        if(userFound?.music.toLowerCase() !== 'propietario'){
             return Err({
                 AppRuntimeError: 'User is not an owner'
             });
