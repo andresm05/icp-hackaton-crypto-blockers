@@ -100865,11 +100865,6 @@ var src_default = Canister({
                 RoleException: "User is not an owner"
             });
         }
-        if (owners.get(Principal3.fromText(email)).Some) {
-            return Err({
-                RoleException: "Owner already exists"
-            });
-        }
         users.insert(user.id, user);
         const owner = {
             id: Principal3.fromText(id2),
@@ -100892,11 +100887,6 @@ var src_default = Canister({
         text,
         int64
     ], Result(User, RoleException), (id2, email, phone, role, latitude, longitude, vehicleType, vehiclePlate, vehicleSize)=>{
-        if (users.get(Principal3.fromText(id2)).Some) {
-            return Err({
-                RoleException: "User already exists"
-            });
-        }
         if (role.toLowerCase() !== "cliente") {
             return Err({
                 RoleException: "User is not a customer"

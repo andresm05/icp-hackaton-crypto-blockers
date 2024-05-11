@@ -65,11 +65,6 @@ export default Canister({
                 })
         }
 
-        if(owners.get(Principal.fromText(email)).Some){
-            return Err({
-                RoleException: 'Owner already exists'
-            })
-        }
 
         users.insert(user.id, user);
 
@@ -90,11 +85,6 @@ export default Canister({
     createCustomer: update([text, text, text, text, float64, float64, text, text, int64], Result(User, RoleException), (id, email, phone,
         role, latitude, longitude, vehicleType, vehiclePlate, vehicleSize) => {
 
-        if(users.get(Principal.fromText(id)).Some){
-            return Err({
-                RoleException: 'User already exists'
-            })
-        }
 
         if(role.toLowerCase() !== 'cliente'){
             return Err({
