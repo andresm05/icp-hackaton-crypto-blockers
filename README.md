@@ -52,29 +52,32 @@ Podman
 git clone https://github.com/ybedoyab/Bragi.git
 ```
 
-Navegar al directorio:
+**Navegar al directorio:**
 
 ```Bash
 cd ./
+```
 
-Eliminar módulos antiguos:
+**Eliminar módulos antiguos:**
 ```Bash
 rm -rf node_modules
 
-
-##Instalar dependencias de Node.js:
-Bash
+**Instalar dependencias de Node.js:**
+```Bash
 npm install
+```
 
+**Inicializar DFX:**
 
-Inicializar DFX:
-Bash
+```Bash
 dfx start --background
+```
 
 
 Implementar la aplicación:
-Bash
+```Bash
 dfx deploy
+```
 
 ¡Disfruta de una experiencia de estacionamiento segura y conveniente en Medellín con ParQApp!
 
