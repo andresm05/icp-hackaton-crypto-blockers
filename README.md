@@ -39,9 +39,9 @@ ParQApp genera ingresos a través de dos modelos:
 
 ## Dependencias necesarias:
 
-WSL (Windows Subsystem for Linux)
-DFX
-Podman
+1. WSL (Windows Subsystem for Linux)
+2. DFX
+3. Podman
 
 ## Pasos para comenzar:
 
@@ -81,10 +81,7 @@ dfx start --background
 dfx deploy
 ```
 
-¡Disfruta de una experiencia de estacionamiento segura y conveniente en Medellín con ParQApp!
+**¡Disfruta de una experiencia de estacionamiento segura y conveniente en Medellín con ParQApp!**
 
 
-Sitio web de ParQApp [se quitó una URL no válida] (Nota: este sitio web no existe, se ha creado a modo de ejemplo. Puedes reemplazarlo con el sitio web real de ParQApp cuando esté disponible)
-Documentación de ParQApp [se quitó una URL no válida] (Nota: este sitio web no existe, se ha creado a modo de ejemplo. Puedes reemplazarlo con la documentación real de ParQApp cuando esté disponible)
-[Repositori
-
+Sitio web de ParQApp : **https://uvyfx-hiaaa-aaaap-qhivq-cai.icp0.io/**
