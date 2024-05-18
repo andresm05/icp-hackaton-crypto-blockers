@@ -22,7 +22,7 @@ Medellín enfrenta un déficit de espacios de estacionamiento, lo que lleva a qu
 **ParQApp ofrece una solución efectiva a este problema al conectar a quienes buscan estacionamiento con aquellos que tienen espacios disponibles.**
 
 ## Implementación de ICP
-**ICP (Internet Computer Protocol) es una tecnología blockchain de nueva generación que ofrece las siguientes ventajas para ParQApp:*
+*ICP (Internet Computer Protocol) es una tecnología blockchain de nueva generación que ofrece las siguientes ventajas para ParQApp:*
 
 * **Seguridad:** Las transacciones son seguras y transparentes gracias a los protocolos de ICP.
 * **Identidad anónima:** Los usuarios pueden registrarse y realizar transacciones **sin revelar su identidad real.**
