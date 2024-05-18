@@ -47,8 +47,8 @@ Podman
 
 **Instalar dependencias:** Sigue las instrucciones en la sección "Dependencias necesarias" para instalar WSL, DFX y Podman.
 **Clonar el repositorio:** Ejecuta el siguiente comando en tu terminal:
-Bash
 
+```Bash
 git clone https://github.com/ybedoyab/Bragi.git
 
 Navegar al directorio:
