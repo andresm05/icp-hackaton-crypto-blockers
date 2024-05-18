@@ -49,13 +49,13 @@ Podman
 **Clonar el repositorio:** Ejecuta el siguiente comando en tu terminal:
 
 ```Bash
-git clone https://github.com/ybedoyab/Bragi.git
+git clone https://github.com/andresm05/icp-hackaton-crypto-blockers.git
 ```
 
 **Navegar al directorio:**
 
 ```Bash
-cd ./
+cd ./icp-hackaton-crypto-blockers
 ```
 
 **Eliminar módulos antiguos:**
