@@ -33,6 +33,7 @@ Medellín enfrenta un déficit de espacios de estacionamiento, lo que lleva a qu
 ParQApp genera ingresos a través de dos modelos:
 
 **Suscripción:** Los propietarios de espacios pueden pagar una tarifa mensual para publicar un número ilimitado de espacios durante un período determinado.
+
 **Comisión:** ParQApp cobra una comisión por cada transacción realizada en la plataforma.
 
 **¡Utiliza ParQApp hoy mismo!**
