@@ -86,4 +86,4 @@ dfx deploy
 
 
 Sitio web de ParQApp : **https://uvyfx-hiaaa-aaaap-qhivq-cai.icp0.io/**
-<img src="https://imgur.com/a/jfxD6SZ" alt="Scan de la App">
+
