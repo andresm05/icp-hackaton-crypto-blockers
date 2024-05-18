@@ -52,16 +52,16 @@ Podman
 git clone https://github.com/ybedoyab/Bragi.git
 
 Navegar al directorio:
-Bash
-cd ./Bragi
+
+```Bash
+cd ./
 
 Eliminar módulos antiguos:
-Bash
+```Bash
 rm -rf node_modules
 
-Usa el código con precaución.
 
-Instalar dependencias de Node.js:
+##Instalar dependencias de Node.js:
 Bash
 npm install
 
