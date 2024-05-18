@@ -3,6 +3,7 @@
 ParQApp es una aplicación que ofrece una solución innovadora a la problemática de la movilidad en Medellín. 
 Conectamos a personas que tienen espacios de estacionamiento disponibles en zonas residenciales con aquellos que buscan un lugar para parquear su vehículo.
 
+
 ## Nuestra misión:
 
 Aumentar la disponibilidad de espacios de estacionamiento seguros.
@@ -85,3 +86,4 @@ dfx deploy
 
 
 Sitio web de ParQApp : **https://uvyfx-hiaaa-aaaap-qhivq-cai.icp0.io/**
+<img src="https://imgur.com/a/jfxD6SZ" alt="Scan de la App">
