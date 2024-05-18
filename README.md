@@ -61,8 +61,10 @@ cd ./
 **Eliminar módulos antiguos:**
 ```Bash
 rm -rf node_modules
+```
 
 **Instalar dependencias de Node.js:**
+
 ```Bash
 npm install
 ```
@@ -73,8 +75,8 @@ npm install
 dfx start --background
 ```
 
+**Implementar la aplicación:**
 
-Implementar la aplicación:
 ```Bash
 dfx deploy
 ```
