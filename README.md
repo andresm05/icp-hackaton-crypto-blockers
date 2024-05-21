@@ -88,3 +88,5 @@ dfx deploy
 
 Sitio web de ParQApp : **https://uvyfx-hiaaa-aaaap-qhivq-cai.icp0.io/**
 
+Más informacón acerca de PARQAPP: **https://www.canva.com/design/DAGEwKiEA1U/fFIeSt2zaLIMzj1lizNZPA/view?utm_content=DAGEwKiEA1U&utm_campaign=designshare&utm_medium=link&utm_source=editor**
+
